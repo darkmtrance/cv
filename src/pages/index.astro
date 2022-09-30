@@ -1,11 +1,15 @@
 ---
-import Layout from '../layouts/Layout2.astro';
+import Layout from '../layouts/Layout.astro';
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
+
+import Certificacion from '../components/Certificacion.astro';
 
 
 import photo from '../images/michael.png';
 import background from '../images/pexels-faik-akmd-1025469.jpg';
+import ingles from '../images/en.png';
+import espanhol from '../images/es.png';
 
 const aboutme = "Perfil Profesional";
 const experience = "Experiencia";
@@ -165,6 +169,8 @@ const telefono = "+511 991214131";
                     </div>
                 </section>
             </div>
+
+            
 
             <section id="experience" class="section section-secondary section-no-border m-0">
                 <div class="container">
@@ -394,11 +400,11 @@ const telefono = "+511 991214131";
                                         <h4 class="text-color-light">Idiomas</h4>
                                         <ul class="custom-list-style-1 p-0">
                                             <li>
-                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/demos/resume/about-me/en.png" class="flag flag-us me-1" alt="English">Ingles:</span>
+                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={ingles} class="flag flag-us me-1" alt="English">Ingles:</span>
                                                 <span class="custom-text-color-2">Intermedio</span>
                                             </li>
                                             <li>
-                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/demos/resume/about-me/es.png" class="flag flag-es me-1" alt="Spanish">Español:</span>
+                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={espanhol} class="flag flag-es me-1" alt="Spanish">Español:</span>
                                                 <span class="custom-text-color-2">Avanzado</span>
                                             </li>
                                         </ul>
@@ -410,158 +416,7 @@ const telefono = "+511 991214131";
                 </div>
             </section>
 
-            <section id="portfolio" class="section section-no-border bg-color-secondary m-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-color-light font-weight-extra-bold text-uppercase">{portfolio}</h2>
-                            <ul class="nav nav-pills sort-source custom-nav-sort mb-4" data-sort-id="portfolio" data-option-key="filter">
-                                <li class="nav-item active" data-option-value="*"><a class="nav-link active" href="#">Show All</a></li>
-                                <li class="nav-item" data-option-value=".microsoft"><a class="nav-link" href="#">Microsoft</a></li>
-                                <li class="nav-item" data-option-value=".linux"><a class="nav-link" href="#">The Linux Foundation</a></li>
-                                <li class="nav-item" data-option-value=".otros"><a class="nav-link" href="#">Otros</a></li>
-                            </ul>
-                            <div class="sort-destination-loader sort-destination-loader-showing">
-                                <div class="row image-gallery sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item linux">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/cka_from_cncfsite__281_29.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/cka_from_cncfsite__281_29.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item linux">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/ckad_from_cncfsite.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/ckad_from_cncfsite.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item otros">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/scrum.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/scrum.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item microsoft">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/azure-developer-associate-600x600.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/azure-developer-associate-600x600.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item microsoft">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/CERT-Expert-DevOps-Engineer-600x600.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/CERT-Expert-DevOps-Engineer-600x600.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item microsoft">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/azure-data-fundamentals-600x600.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/azure-data-fundamentals-600x600.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item microsoft">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/azure-ai-fundamentals-600x600.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/azure-ai-fundamentals-600x600.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item microsoft">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/CERT-Fundamentals-Power-Platform.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/CERT-Fundamentals-Power-Platform.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item otros">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/gitlab.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/gitlab.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item otros">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/Badges_v8-07_Practitioner.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/Badges_v8-07_Practitioner.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3 isotope-item otros">
-                                        <div class="image-gallery-item mb-4 pb-3">
-                                            <a href="img/certi/50_Oracle_Cloud_Infrastructure.png" class="lightbox-portfolio">
-                                                <span class="thumb-info custom-thumb-info-1">
-                                                    <span class="thumb-info-wrapper">
-                                                        <span class="thumb-info-plus"></span>
-                                                        <img src="img/certi/50_Oracle_Cloud_Infrastructure.png" class="img-fluid" alt="">
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Certificacion portfolio={portfolio} />
 
             <section id="recommendations" class="section section-no-border bg-color-primary m-0">
                 <div class="container">
@@ -732,7 +587,7 @@ const telefono = "+511 991214131";
                         </section>
                     </div>
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border h-100 m-0" style="background: url(img/demos/resume/about-me/pexels-faik-akmd-1025469.jpg); background-size: cover;">
+                        <section class="section section-no-border h-100 m-0" style={`background: url(${background}); background-size: cover;`}>
                             <div class="row m-0">
                                 <div class="col-half-section col-half-section-left ms-3">
                                     <a href="mailto:you@domain.com" class="text-decoration-none">

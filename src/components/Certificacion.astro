@@ -1,0 +1,90 @@
+---
+
+export interface Props {
+    portfolio: string;
+}
+
+    const certificionData = [{
+        brand: 'linux',
+        url: 'img/certi/cka_from_cncfsite__281_29.png'
+    },
+    {
+        brand: 'linux',
+        url: 'img/certi/ckad_from_cncfsite.png'
+    },
+    {
+        brand: 'otros',
+        url: 'img/certi/scrum.png'
+    },
+    {
+        brand: 'microsoft',
+        url: 'img/certi/azure-developer-associate-600x600.png'
+    },
+    {
+        brand: 'microsoft',
+        url: 'img/certi/CERT-Expert-DevOps-Engineer-600x600.png'
+    },
+    {
+        brand: 'microsoft',
+        url: 'img/certi/azure-data-fundamentals-600x600.png'
+    },
+    {
+        brand: 'microsoft',
+        url: 'img/certi/azure-ai-fundamentals-600x600.png'
+    },
+    {
+        brand: 'microsoft',
+        url: 'img/certi/CERT-Fundamentals-Power-Platform.png'
+    },
+    {
+        brand: 'otros',
+        url: 'img/certi/gitlab.png'
+    },
+    {
+        brand: 'otros',
+        url: 'img/certi/Badges_v8-07_Practitioner.png'
+    },
+    {
+        brand: 'otros',
+        url: 'img/certi/50_Oracle_Cloud_Infrastructure.png'
+    }
+    ];
+
+const { portfolio } = Astro.props;
+---
+
+
+<section id="portfolio" class="section section-no-border bg-color-secondary m-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="text-color-light font-weight-extra-bold text-uppercase">{portfolio}</h2>
+                            <ul class="nav nav-pills sort-source custom-nav-sort mb-4" data-sort-id="portfolio" data-option-key="filter">
+                                <li class="nav-item active" data-option-value="*"><a class="nav-link active" href="#">Show All</a></li>
+                                <li class="nav-item" data-option-value=".microsoft"><a class="nav-link" href="#">Microsoft</a></li>
+                                <li class="nav-item" data-option-value=".linux"><a class="nav-link" href="#">The Linux Foundation</a></li>
+                                <li class="nav-item" data-option-value=".otros"><a class="nav-link" href="#">Otros</a></li>
+                            </ul>
+                            <div class="sort-destination-loader sort-destination-loader-showing">
+                                <div class="row image-gallery sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
+                                    {certificionData.map(certificado => (
+                                        <div class={`col-12 col-sm-6 col-lg-3 isotope-item ${certificado.brand}`}>
+                                        <div class="image-gallery-item mb-4 pb-3">
+                                            <a href={certificado.url} class="lightbox-portfolio">
+                                                <span class="thumb-info custom-thumb-info-1">
+                                                    <span class="thumb-info-wrapper">
+                                                        <span class="thumb-info-plus"></span>
+                                                        <img src={certificado.url} class="img-fluid" alt="">
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        </div>
+
+                                    ))}                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
