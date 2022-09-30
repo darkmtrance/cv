@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout2.astro';
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
 
+
+import photo from '../images/michael.png';
+import background from '../images/pexels-faik-akmd-1025469.jpg';
+
 const aboutme = "Perfil Profesional";
 const experience = "Experiencia";
 const education = "Educación";
@@ -23,11 +27,11 @@ const telefono = "+511 991214131";
         <div role="main" class="main">
 
             <div id="about-me">
-                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/resume/about-me/pexels-faik-akmd-1025469.jpg">
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={background}>
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
-                                <img src="img/demos/resume/about-me/michael.png" class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
+                                <img src={photo} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
                             </div>
                             <div class="col-lg-6 col-xl-5">
                                 <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
