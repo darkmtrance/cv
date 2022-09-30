@@ -1,8 +1,15 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 
 export interface Props {
     portfolio: string;
-}
+};
+
+const data = [{
+    brand: 'linux',
+        url: '../images/50_Oracle_Cloud_Infrastructure.png'
+}];
 
     const certificionData = [{
         brand: 'linux',
@@ -53,7 +60,6 @@ export interface Props {
 const { portfolio } = Astro.props;
 ---
 
-
 <section id="portfolio" class="section section-no-border bg-color-secondary m-0">
                 <div class="container">
                     <div class="row">
@@ -74,7 +80,7 @@ const { portfolio } = Astro.props;
                                                 <span class="thumb-info custom-thumb-info-1">
                                                     <span class="thumb-info-wrapper">
                                                         <span class="thumb-info-plus"></span>
-                                                        <img src={certificado.url} class="img-fluid" alt="">
+                                                        <img src={certificado.url} height={48} width={48} class="img-fluid" alt="prueba" />
                                                     </span>
                                                 </span>
                                             </a>

@@ -4,10 +4,7 @@ import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
 import Certificacion from '../components/Certificacion.astro';
 import SobreMi from '../components/SobreMi.astro';
-
-import background from '../images/pexels-faik-akmd-1025469.jpg';
-import ingles from '../images/en.png';
-import espanhol from '../images/es.png';
+import Idiomas from '../components/Idiomas.astro';
 
 const aboutme = "Perfil Profesional";
 const experience = "Experiencia";
@@ -366,25 +363,7 @@ const telefono = "+511 991214131";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="custom-box-details bg-color-darken custom-box-shadow-1">
-                                        <h4 class="text-color-light">Idiomas</h4>
-                                        <ul class="custom-list-style-1 p-0">
-                                            <li>
-                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={ingles} class="flag flag-us me-1" alt="English">Ingles:</span>
-                                                <span class="custom-text-color-2">Intermedio</span>
-                                            </li>
-                                            <li>
-                                                <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={espanhol} class="flag flag-es me-1" alt="Spanish">Español:</span>
-                                                <span class="custom-text-color-2">Avanzado</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Idiomas />
                     </div>
                 </div>
             </section>
