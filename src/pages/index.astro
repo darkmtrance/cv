@@ -2,11 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
-
 import Certificacion from '../components/Certificacion.astro';
+import SobreMi from '../components/SobreMi.astro';
 
-
-import photo from '../images/michael.png';
 import background from '../images/pexels-faik-akmd-1025469.jpg';
 import ingles from '../images/en.png';
 import espanhol from '../images/es.png';
@@ -31,35 +29,10 @@ const telefono = "+511 991214131";
         <div role="main" class="main">
 
             <div id="about-me">
-                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={background}>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
-                                <img src={photo} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
-                            </div>
-                            <div class="col-lg-6 col-xl-5">
-                                <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
-                                <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">Arquitecto de Información</p>
-                                <span class="custom-about-me-infos">
-                                    <span class="custom-text-color-1 text-uppercase">Indra Company</span>
-                                    <span class="custom-text-color-1 text-uppercase mb-3">Servicios y tecnologías de la información</span>
-                                    <span class="custom-text-color-1 text-uppercase">
-                                        <strong class="text-color-light">Previo: </strong>
-                                        Arquitecto de Información en Sapia
-                                        <a data-hash href="#experience" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
-                                    </span>
-                                    <span class="custom-text-color-1 text-uppercase">
-                                        <strong class="text-color-light">Educación: </strong>
-                                        PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ
-                                        <a data-hash href="#education" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
-                                    </span>
-                                </span>
-                            </div>
-                            <!--div class="col-lg-2 col-xl-3 d-none d-lg-block">
-                                <img src="img/demos/resume/about-me/pexels-lukas-917463.jpg" custom-anim class="img-fluid custom-image-pos-1" alt />
-                            </div-->
-                        </div>
-                    </div>
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/resume/about-me/origin/pexels-faik-akmd-1025469.jpg">
+                    
+                    <SobreMi />
+                    
                     <ul class="social-icons custom-social-icons">
                         <li class="social-icons-facebook">
                             <a href="http://www.facebook.com/" target="_blank" title="Facebook">
@@ -587,7 +560,7 @@ const telefono = "+511 991214131";
                         </section>
                     </div>
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border h-100 m-0" style={`background: url(${background}); background-size: cover;`}>
+                        <section class="section section-no-border h-100 m-0" style="background: url(img/demos/resume/about-me/origin/pexels-faik-akmd-1025469.jpg); background-size: cover;">
                             <div class="row m-0">
                                 <div class="col-half-section col-half-section-left ms-3">
                                     <a href="mailto:you@domain.com" class="text-decoration-none">

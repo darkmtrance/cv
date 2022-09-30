@@ -1,0 +1,33 @@
+---
+import { Image } from '@astrojs/image/components';
+import photo from '../images/michael.png';
+
+---
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
+            <Image src={photo} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt="Michael Tomaylla" />
+        </div>
+        <div class="col-lg-6 col-xl-5">
+            <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
+            <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">Arquitecto de Información</p>
+            <span class="custom-about-me-infos">
+                <span class="custom-text-color-1 text-uppercase">Indra Company</span>
+                <span class="custom-text-color-1 text-uppercase mb-3">Servicios y tecnologías de la información</span>
+                <span class="custom-text-color-1 text-uppercase">
+                    <strong class="text-color-light">Previo: </strong>
+                    Arquitecto de Información en Sapia
+                    <a data-hash href="#experience" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
+                </span>
+                <span class="custom-text-color-1 text-uppercase">
+                    <strong class="text-color-light">Educación: </strong>
+                    PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ
+                    <a data-hash href="#education" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
+                </span>
+            </span>
+        </div>
+        <!--div class="col-lg-2 col-xl-3 d-none d-lg-block">
+            <img src="img/demos/resume/about-me/pexels-lukas-917463.jpg" custom-anim class="img-fluid custom-image-pos-1" alt />
+        </div-->
+    </div>
+</div>
