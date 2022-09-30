@@ -33,7 +33,7 @@ Theme Version:	9.7.0
 	/*
 	Contact Form: Basic
 	*/
-	$('.contact-form').each(function(){
+	$('.contact-form2').each(function(){
 		$(this).validate({
 			errorPlacement: function(error, element) {
 				if(element.attr('type') == 'radio' || element.attr('type') == 'checkbox') {

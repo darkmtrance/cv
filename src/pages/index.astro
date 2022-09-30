@@ -700,7 +700,7 @@ const telefono = "+511 991214131";
 
                                     <h2 class="text-color-light text-uppercase font-weight-extra-bold">{sayHello}</h2>
                                     <!--Netlify Forms-->
-                                    <form id="contactForm" class="contact-form custom-form-style form-errors-light" action="php/contact-form.php" method="post">
+                                    <form id="contactForm" class="contact-form custom-form-style form-errors-light">
                                         <div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
                                             <strong>Success!</strong> Your message has been sent to us.
                                         </div>
@@ -719,7 +719,7 @@ const telefono = "+511 991214131";
                                             <div class="form-control-custom form-control-custom-light">
                                                 <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" placeholder="Message*" id="message" required="" aria-required="true"></textarea>
                                             </div>
-                                            <input type="submit" class="btn btn-quaternary text-color-light text-uppercase font-weight-semibold outline-none custom-btn-style-2 custom-border-radius-1" value="Enviar" />
+                                            <input type="submit" class="btn btn-quaternary text-color-light text-uppercase font-weight-semibold outline-none custom-btn-style-2 custom-border-radius-1" id="button" value="Enviar" />
                                         </div>
                                     </form>
 
@@ -827,8 +827,61 @@ const telefono = "+511 991214131";
     <!-- Theme Initialization Files -->
     <script is:inline src="js/theme.init.js"></script>
 
-    <script>
+    <script type="text/javascript">
+        const btn = document.getElementById('button');
+        const name = document.getElementById('name');
+        const subject = document.getElementById('subject');
+        const message = document.getElementById('message');
 
+
+        document.getElementById('name')
+        .addEventListener('click', function(event) {
+            event.preventDefault();
+            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
+            document.getElementById('contactSuccess').classList.add('d-none');
+            }
+            if(!document.getElementById('contactError').classList.contains('d-none')){
+                document.getElementById('contactError').classList.add('d-none');
+            }
+        });
+
+        document.getElementById('subject')
+        .addEventListener('click', function(event) {
+            event.preventDefault();
+            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
+            document.getElementById('contactSuccess').classList.add('d-none');
+            }
+            if(!document.getElementById('contactError').classList.contains('d-none')){
+                document.getElementById('contactError').classList.add('d-none');
+            }
+        });
+
+        document.getElementById('message')
+        .addEventListener('click', function(event) {
+            event.preventDefault();
+            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
+            document.getElementById('contactSuccess').classList.add('d-none');
+            }
+            if(!document.getElementById('contactError').classList.contains('d-none')){
+                document.getElementById('contactError').classList.add('d-none');
+            }
+        });
+
+        document.getElementById('contactForm')
+        .addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+
+        const serviceID = 'default_service';
+        const templateID = 'template_qqs0uzb';
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                document.getElementById('contactSuccess').classList.remove('d-none');
+            }, (err) => {
+                document.getElementById('contactError').classList.remove('d-none');
+            });
+        });
 
     </script>
 
