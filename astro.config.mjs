@@ -8,5 +8,5 @@ import purgecss from "astro-purgecss";
 export default defineConfig({
   integrations: [image({
     serviceEntryPoint: '@astrojs/image/sharp'
-}), purgecss()]
+})]
 });
