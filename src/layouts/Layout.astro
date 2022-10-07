@@ -1,4 +1,11 @@
 ---
+//import { PurgeCSS } from 'purgecss'
+
+
+
+//const purgecss = await new PurgeCSS().purge('./purgecss.config.cjs');
+
+
 export interface Props {
 	title: string;
 }
@@ -6,10 +13,12 @@ export interface Props {
 const { title } = Astro.props;
 
 
+
 ---
 
 <!DOCTYPE html>
-<html class="dark">
+<html lang="en" class="dark">
+
     <head>
 
 		<!-- Basic -->
@@ -30,31 +39,9 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
 		<!-- Web Fonts  -->
-		<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet" type="text/css">
-
-		<!-- Vendor CSS -->
-		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
-		<link rel="stylesheet" href="vendor/animate/animate.compat.css">
-		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
-		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-
-		<!-- Theme CSS -->
-		<link rel="stylesheet" href="css/theme.css">
-		<link rel="stylesheet" href="css/theme-elements.css">
-		<link rel="stylesheet" href="css/theme-blog.css">
-		<link rel="stylesheet" href="css/theme-shop.css">
-
-		<!-- Demo CSS -->
-		<link rel="stylesheet" href="css/demos/demo-resume-dark.css">
-
-		<!-- Skin CSS -->
-		<link id="skinCSS" rel="stylesheet" href="css/skins/skin-resume-dark.css">
-
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="css/custom.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link id="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet" type="text/css">
 
 		<!-- Head Libs -->
 		<script is:inline src="vendor/modernizr/modernizr.min.js"></script>

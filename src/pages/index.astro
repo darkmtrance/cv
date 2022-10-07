@@ -5,6 +5,21 @@ import Footer from '../layouts/Footer.astro';
 import Certificacion from '../components/Certificacion.astro';
 import SobreMi from '../components/SobreMi.astro';
 import Idiomas from '../components/Idiomas.astro';
+import Educacion from '../components/Educacion.astro';
+import Recomendacion from '../components/Recomendacion.astro';
+
+import '../styles/bootstrap.min.css';
+import '../styles/all.min.css';
+import '../styles/animate.compat.css';
+import '../styles/simple-line-icons.min.css';
+import '../styles/owl.carousel.min.css';
+import '../styles/owl.theme.default.min.css';
+import '../styles/magnific-popup.min.css';
+
+import '../styles/theme.css';
+import '../styles/theme-elements.css';
+import '../styles/demo-resume-dark.css';
+import '../styles/skin-resume-dark.css';
 
 const aboutme = "Perfil Profesional";
 const experience = "Experiencia";
@@ -232,71 +247,7 @@ const telefono = "+511 991214131";
                 </div>
             </section>
 
-            <section id="education" class="section section-no-border bg-color-dark m-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-color-quaternary text-uppercase font-weight-extra-bold m-0">{education}</h2>
-                            <div class="owl-carousel nav-bottom custom-dots-style-1 custom-dots-color-1 custom-dots-color-1-light mb-0" data-plugin-options="{'items': 1, 'loop': false, 'dots': true, 'nav': false}">
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ</h4>
-                                            <p class="custom-text-color-2 mb-1">Ingenieria Informática</p>
-                                            <strong class="text-color-primary">2014</strong>
-                                        </div>
-                                    </div>
-                                    <!--div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2022</strong>
-                                        </div>
-                                    </div-->
-                                </div>
-                                <!--div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2022</strong>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2022</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2022</strong>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-light m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2022</strong>
-                                        </div>
-                                    </div>
-                                </div-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Educacion education={education} />
 
             <section id="skills" class="section section-no-border bg-color-dark m-0">
                 <div class="container">
@@ -370,43 +321,8 @@ const telefono = "+511 991214131";
 
             <Certificacion portfolio={portfolio} />
 
-            <section id="recommendations" class="section section-no-border bg-color-primary m-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-color-light font-weight-extra-bold text-uppercase">{recommendations}</h2>
-                        </div>
-                        <div class="col-lg-12 p-0">
-                            <div class="owl-carousel custom-dots-style-1 custom-dots-color-1 custom-dots-color-1-light custom-dots-position-1 mb-0" data-plugin-options="{'items': 1, 'autoHeight': true, 'loop': false, 'nav': false, 'dots': true}">
-                                <div>
-                                    <div class="col">
-                                        <div class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
-                                            <blockquote class="pb-2">
-                                                <p class="custom-text-color-3">Cuando la preparación profesional encuentra un enfoque estratégico, las oportunidades se muestran solas. Un placer trabajar contigo. Que sigan los éxitos.</p>
-                                            </blockquote>
-                                            <div class="testimonial-author float-start">
-                                                <p><strong class="text-uppercase text-color-light">Jorge Pérez Osterling</strong><span class="custom-text-color-3 font-weight-light">Gerente Comercial ORBIS MOBILE SAC</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="col">
-                                        <div class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
-                                            <blockquote class="pb-2">
-                                                <p class="custom-text-color-3">Michael es un emprendedor que ha sabido aprovechar una necesidad latente para hacer valer su potencial como profesional. Cuando acudí a él supe que me daría solución en el área de sistemas de VICSATEX y así fue, con un enfoque y orientación de las nuevas tecnologías.</p>
-                                            </blockquote>
-                                            <div class="testimonial-author float-start">
-                                                <p><strong class="text-uppercase text-color-light">Miguel Vicente</strong><span class="custom-text-color-3 font-weight-light">Gerente General VICSATEX EIRL</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Recomendacion recommendations={recommendations} />
+
 
             <!--section id="blog" class="section section-no-border bg-color-dark m-0">
                 <div class="container">
