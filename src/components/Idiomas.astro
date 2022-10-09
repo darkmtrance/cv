@@ -1,7 +1,19 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { generateImage } from 'astro-eleventy-img';
 //import ingles from 'img/demos/resume/about-me/origin/en.png';
 //import espanhol from 'img/demos/resume/about-me/origin/es.png';
+const en = generateImage('src/images/en.png', {
+  // The options here are passed directly to eleventy-img
+  widths: [16],
+  formats: ['webp', 'avif'],
+});
+
+const es = generateImage('src/images/es.png', {
+  // The options here are passed directly to eleventy-img
+  widths: [16],
+  formats: ['webp', 'avif'],
+});
+
 ---
 
 
@@ -12,11 +24,11 @@ import { Image } from '@astrojs/image/components';
                 <h4 class="text-color-light">Idiomas</h4>
                 <ul class="custom-list-style-1 p-0">
                     <li>
-                        <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/demos/resume/about-me/origin/en.png" class="flag flag-us me-1" alt="English" />Ingles:</span>
+                        <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={en.webp[0].url} class="flag flag-us me-1" alt="English" />Ingles:</span>
                         <span class="custom-text-color-2">Intermedio</span>
                     </li>
                     <li>
-                        <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/demos/resume/about-me/origin/es.png" class="flag flag-es me-1" alt="Spanish" />Español:</span>
+                        <span class="font-weight-semibold custom-max-width-1 text-color-light"><img src={es.webp[0].url} class="flag flag-es me-1" alt="Spanish" />Español:</span>
                         <span class="custom-text-color-2">Avanzado</span>
                     </li>
                 </ul>
