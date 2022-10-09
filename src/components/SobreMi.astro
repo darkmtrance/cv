@@ -1,12 +1,19 @@
 ---
 //import { Image } from '@astrojs/image/components';
 //import photo from 'img/demos/resume/about-me/origin/michael.png';
-
+import { generateImage } from 'astro-eleventy-img';
+//import ingles from 'img/demos/resume/about-me/origin/en.png';
+//import espanhol from 'img/demos/resume/about-me/origin/es.png';
+const michael = generateImage('src/images/michael.png', {
+  // The options here are passed directly to eleventy-img
+  widths: [900],
+  formats: ['webp', 'avif'],
+});
 ---
 <div class="container">
     <div class="row">
         <div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
-            <img src="img/demos/resume/about-me/origin/michael.png" class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4"  alt="Michael Tomaylla" />
+            <img src={michael.webp[0].url} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4"  alt="Michael Tomaylla" />
         </div>
         <div class="col-lg-6 col-xl-5">
             <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
