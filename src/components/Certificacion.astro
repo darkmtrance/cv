@@ -1,10 +1,9 @@
 ---
-
-
-
 export interface Props {
     portfolio: string;
 };
+
+import { Image } from 'astro-eleventy-img';
 
 const data = [{
     brand: 'linux',
@@ -13,47 +12,47 @@ const data = [{
 
     const certificionData = [{
         brand: 'linux',
-        url: 'img/certi/cka_from_cncfsite__281_29.png'
+        url: 'src/images/certi/cka_from_cncfsite__281_29.png'
     },
     {
         brand: 'linux',
-        url: 'img/certi/ckad_from_cncfsite.png'
+        url: 'src/images/certi/ckad_from_cncfsite.png'
     },
     {
         brand: 'otros',
-        url: 'img/certi/scrum.png'
+        url: 'src/images/certi/scrum.png'
     },
     {
         brand: 'microsoft',
-        url: 'img/certi/azure-developer-associate-600x600.png'
+        url: 'src/images/certi/azure-developer-associate-600x600.png'
     },
     {
         brand: 'microsoft',
-        url: 'img/certi/CERT-Expert-DevOps-Engineer-600x600.png'
+        url: 'src/images/certi/CERT-Expert-DevOps-Engineer-600x600.png'
     },
     {
         brand: 'microsoft',
-        url: 'img/certi/azure-data-fundamentals-600x600.png'
+        url: 'src/images/certi/azure-data-fundamentals-600x600.png'
     },
     {
         brand: 'microsoft',
-        url: 'img/certi/azure-ai-fundamentals-600x600.png'
+        url: 'src/images/certi/azure-ai-fundamentals-600x600.png'
     },
     {
         brand: 'microsoft',
-        url: 'img/certi/CERT-Fundamentals-Power-Platform.png'
+        url: 'src/images/certi/CERT-Fundamentals-Power-Platform.png'
     },
     {
         brand: 'otros',
-        url: 'img/certi/gitlab.png'
+        url: 'src/images/certi/gitlab.png'
     },
     {
         brand: 'otros',
-        url: 'img/certi/Badges_v8-07_Practitioner.png'
+        url: 'src/images/certi/Badges_v8-07_Practitioner.png'
     },
     {
         brand: 'otros',
-        url: 'img/certi/50_Oracle_Cloud_Infrastructure.png'
+        url: 'src/images/certi/50_Oracle_Cloud_Infrastructure.png'
     }
     ];
 
@@ -80,7 +79,7 @@ const { portfolio } = Astro.props;
                                                 <span class="thumb-info custom-thumb-info-1">
                                                     <span class="thumb-info-wrapper">
                                                         <span class="thumb-info-plus"></span>
-                                                        <img src={certificado.url} height={48} width={48} class="img-fluid" alt="prueba" />
+                                                        <Image src={certificado.url} class="img-fluid" alt="prueba" />
                                                     </span>
                                                 </span>
                                             </a>
