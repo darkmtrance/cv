@@ -33,6 +33,15 @@ const estadoCivil = "Soltero";
 const nacionalidad = "Peruana";
 const email = "mtomaylla@incafact.com";
 const telefono = "+511 991214131";
+
+import { generateImage } from 'astro-eleventy-img';
+
+const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
+  // The options here are passed directly to eleventy-img
+  widths: [4200],
+  formats: ['webp', 'avif'],
+});
+
 ---
 
 <Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
@@ -41,7 +50,7 @@ const telefono = "+511 991214131";
         <div role="main" class="main">
 
             <div id="about-me">
-                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/resume/about-me/origin/pexels-faik-akmd-1025469.jpg">
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.webp[0].url}>
                     
                     <SobreMi />
                     
@@ -455,7 +464,7 @@ const telefono = "+511 991214131";
                         </section>
                     </div>
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border h-100 m-0" style="background: url(img/demos/resume/about-me/origin/pexels-faik-akmd-1025469.jpg); background-size: cover;">
+                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
                             <div class="row m-0">
                                 <div class="col-half-section col-half-section-left ms-3">
                                     <a href="mailto:you@domain.com" class="text-decoration-none">
