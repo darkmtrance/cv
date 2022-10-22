@@ -607,9 +607,8 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
         .addEventListener('submit', function(event) {
         event.preventDefault();
         
-
         const serviceID = 'default_service';
-        const templateID = 'template_qqs0uzb';
+        const templateID = import.meta.env.templateID;
 
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
