@@ -608,7 +608,7 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
         event.preventDefault();
         
         const serviceID = 'default_service';
-        const templateID = import.meta.env.templateID;
+        const templateID = '{{ env('templateID') }}';
 
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
