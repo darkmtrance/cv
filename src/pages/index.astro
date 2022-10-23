@@ -42,6 +42,9 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
   formats: ['webp', 'avif'],
 });
 
+const key = import.meta.env.templateID;
+console.log(key);
+
 ---
 
 <Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
@@ -608,9 +611,7 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
         event.preventDefault();
         
         const serviceID = 'default_service';
-        const templateID = process.env.templateID;
-
-        console.log(process.env);
+        const templateID = 'template_qqs0uzb';
 
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
