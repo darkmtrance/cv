@@ -8,6 +8,9 @@ import Idiomas from '../components/Idiomas.astro';
 import Educacion from '../components/Educacion.astro';
 import Recomendacion from '../components/Recomendacion.astro';
 
+import HelloWord from '../components/HelloWorld.jsx';
+import Correo from '../components/Correo.jsx';
+
 import '../styles/bootstrap.min.css';
 import '../styles/all.min.css';
 import '../styles/animate.compat.css';
@@ -42,8 +45,6 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
   formats: ['webp', 'avif'],
 });
 
-const key = import.meta.env.templateID;
-console.log(key);
 
 ---
 
@@ -166,8 +167,6 @@ console.log(key);
                     </div>
                 </section>
             </div>
-
-            
 
             <section id="experience" class="section section-secondary section-no-border m-0">
                 <div class="container">
@@ -433,12 +432,12 @@ console.log(key);
             <div id="say-hello" class="container-fluid" data-spy-offset="40">
                 <div class="row">
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border bg-color-primary h-100 m-0">
+                        <Correo client:load />
+                        <!--section class="section section-no-border bg-color-primary h-100 m-0">
                             <div class="row justify-content-end m-0">
                                 <div class="col-half-section col-half-section-right me-3">
 
                                     <h2 class="text-color-light text-uppercase font-weight-extra-bold">{sayHello}</h2>
-                                    <!--Netlify Forms-->
                                     <form id="contactForm" class="contact-form custom-form-style form-errors-light">
                                         <div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
                                             <strong>Success!</strong> Your message has been sent to us.
@@ -464,7 +463,7 @@ console.log(key);
 
                                 </div>
                             </div>
-                        </section>
+                        </section-->
                     </div>
                     <div class="col-lg-6 p-0">
                         <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
@@ -566,7 +565,7 @@ console.log(key);
     <!-- Theme Initialization Files -->
     <script is:inline src="js/theme.init.js"></script>
 
-    <script type="text/javascript">
+    <!--script type="text/javascript">
         const btn = document.getElementById('button');
         const name = document.getElementById('name');
         const subject = document.getElementById('subject');
@@ -621,6 +620,6 @@ console.log(key);
             });
         });
 
-    </script>
+    </script-->
 
 </Layout>
