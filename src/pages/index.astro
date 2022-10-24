@@ -7,8 +7,6 @@ import SobreMi from '../components/SobreMi.astro';
 import Idiomas from '../components/Idiomas.astro';
 import Educacion from '../components/Educacion.astro';
 import Recomendacion from '../components/Recomendacion.astro';
-
-import HelloWord from '../components/HelloWorld.jsx';
 import Correo from '../components/Correo.jsx';
 
 import '../styles/bootstrap.min.css';
@@ -432,38 +430,7 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
             <div id="say-hello" class="container-fluid" data-spy-offset="40">
                 <div class="row">
                     <div class="col-lg-6 p-0">
-                        <Correo client:load />
-                        <!--section class="section section-no-border bg-color-primary h-100 m-0">
-                            <div class="row justify-content-end m-0">
-                                <div class="col-half-section col-half-section-right me-3">
-
-                                    <h2 class="text-color-light text-uppercase font-weight-extra-bold">{sayHello}</h2>
-                                    <form id="contactForm" class="contact-form custom-form-style form-errors-light">
-                                        <div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
-                                            <strong>Success!</strong> Your message has been sent to us.
-                                        </div>
-                                        <div class="contact-form-error alert alert-danger d-none mt-4" id="contactError">
-                                            <strong>Error!</strong> There was an error sending your message.
-                                            <span class="mail-error-message text-1 d-block" id="mailErrorMessage"></span>
-                                        </div>
-
-                                        <div class="form-content">
-                                            <div class="form-control-custom form-control-custom-light">
-                                                <input type="text" class="form-control" name="name" placeholder="Your Name *" data-msg-required="This field is required." id="name" required="" />
-                                            </div>
-                                            <div class="form-control-custom form-control-custom-light">
-                                                <input type="text" class="form-control" name="subject" placeholder="Subject *" data-msg-required="This field is required." id="subject" required="" />
-                                            </div>
-                                            <div class="form-control-custom form-control-custom-light">
-                                                <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" placeholder="Message*" id="message" required="" aria-required="true"></textarea>
-                                            </div>
-                                            <input type="submit" class="btn btn-quaternary text-color-light text-uppercase font-weight-semibold outline-none custom-btn-style-2 custom-border-radius-1" id="button" value="Enviar" />
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </section-->
+                        <Correo client:visible />
                     </div>
                     <div class="col-lg-6 p-0">
                         <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
@@ -564,62 +531,5 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
 
     <!-- Theme Initialization Files -->
     <script is:inline src="js/theme.init.js"></script>
-
-    <!--script type="text/javascript">
-        const btn = document.getElementById('button');
-        const name = document.getElementById('name');
-        const subject = document.getElementById('subject');
-        const message = document.getElementById('message');
-
-
-        document.getElementById('name')
-        .addEventListener('click', function(event) {
-            event.preventDefault();
-            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
-            document.getElementById('contactSuccess').classList.add('d-none');
-            }
-            if(!document.getElementById('contactError').classList.contains('d-none')){
-                document.getElementById('contactError').classList.add('d-none');
-            }
-        });
-
-        document.getElementById('subject')
-        .addEventListener('click', function(event) {
-            event.preventDefault();
-            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
-            document.getElementById('contactSuccess').classList.add('d-none');
-            }
-            if(!document.getElementById('contactError').classList.contains('d-none')){
-                document.getElementById('contactError').classList.add('d-none');
-            }
-        });
-
-        document.getElementById('message')
-        .addEventListener('click', function(event) {
-            event.preventDefault();
-            if(!document.getElementById('contactSuccess').classList.contains('d-none')){
-            document.getElementById('contactSuccess').classList.add('d-none');
-            }
-            if(!document.getElementById('contactError').classList.contains('d-none')){
-                document.getElementById('contactError').classList.add('d-none');
-            }
-        });
-
-        document.getElementById('contactForm')
-        .addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const serviceID = 'default_service';
-        const templateID = 'template_qqs0uzb';
-
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                document.getElementById('contactSuccess').classList.remove('d-none');
-            }, (err) => {
-                document.getElementById('contactError').classList.remove('d-none');
-            });
-        });
-
-    </script-->
 
 </Layout>
