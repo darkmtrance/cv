@@ -6,10 +6,12 @@ function Correo() {
 
   const sayHello = "Hola Mundo";
 
+  console.log(import.meta.env.PUBLIC_TEMPLATEID);
+  const templateID = import.meta.env.PUBLIC_TEMPLATEID;
+
   const sendEmail = (e) => {
     e.preventDefault();
         const serviceID = 'default_service';
-        const templateID = process.env.templateID;
         emailjs.sendForm(serviceID, templateID, form.current, "P7gwgRJIiG9VbPrkm")
             .then(() => {
                 document.getElementById('contactSuccess').classList.remove('d-none');
