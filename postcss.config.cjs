@@ -1,4 +1,4 @@
-module.exports = {
+/* module.exports = {
     plugins: {
         '@fullhuman/postcss-purgecss': {
             content: [
@@ -20,4 +20,4 @@ module.exports = {
                 
         },
       },
-  }
+  } */
