@@ -376,6 +376,7 @@ section.section {
 /*
 * About Me
 */
+/* purgecss start ignore */
 .about-me-more {
 		display: none;
 }
@@ -383,7 +384,7 @@ section.section {
 .about-me-more.about-me-more-visible {
 		display: block;
 }
-
+/* purgecss end ignore */
 .custom-about-me-infos span {
 		display: block;
 }
