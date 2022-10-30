@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), compress()],
+  integrations: [react(), compress(), purgecss()],
   vite: {
     ssr: {
       external: ["@11ty/eleventy-img"]
