@@ -3588,6 +3588,7 @@ html.sticky-header-active .hamburguer-btn.hamburguer-btn-sticky-dark .close span
 }
 
 /* Owl Carousel */
+/* purgecss start ignore */
 .owl-carousel {
 	display: block;
 	margin-bottom: 20px;
@@ -4841,6 +4842,8 @@ html.sticky-header-active .hamburguer-btn.hamburguer-btn-sticky-dark .close span
 .owl-carousel-light .owl-dots .owl-dot span {
 	margin: 5px 2px;
 }
+
+/* purgecss end ignore */
 
 /* Cascading Images */
 .cascading-images-wrapper {
