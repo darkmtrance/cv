@@ -8,7 +8,7 @@ module.exports = {
                 './src/layouts/*.{js,jsx,ts,tsx,svelte,astro}'
             ],
             //defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-            safelist: ["html", "body", /owl$/,".owl-carousel.owl-loaded"]
+            safelist: ["html", "body", /owl$/,".owl-carousel.owl-loaded",".about-me-more"]
         },
       },
   }
