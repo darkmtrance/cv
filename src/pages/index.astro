@@ -8,6 +8,7 @@ import Idiomas from '../components/Idiomas.astro';
 import Educacion from '../components/Educacion.astro';
 import Recomendacion from '../components/Recomendacion.astro';
 import Correo from '../components/Correo.jsx';
+import PerfilProfesional from '../components/PerfilProfesional.jsx';
 
 import '../styles/bootstrap.min.css';
 import '../styles/all.min.css';
@@ -151,14 +152,7 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
 
                                 <h2 class="text-color-light font-weight-extra-bold text-uppercase">{aboutme}</h2>
 
-                                <p>Profesional del área informática entusiasta de la investigación, desarrollo de software, con alta capacidad para el análisis, diseño e implementación, así como coordinar el trabajo en equipos para lograr un trabajo rápido, y adaptable a las necesidades del cliente.</p>
-
-                                <div class="about-me-more" id="aboutMeMore">
-                                    <p>Comprometido con el desarrollo del país a través de la generación de valor para la organización que me convoque.</p>
-
-                                </div>
-
-                                <a id="aboutMeMoreBtn" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1" href="#">Ver Más</a>
+                                <PerfilProfesional client:visible />
 
                             </div>
                         </div>
