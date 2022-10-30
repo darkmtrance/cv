@@ -7,17 +7,17 @@ module.exports = {
                 './src/modules/*.{js,jsx,ts,tsx,svelte,astro}',
                 './src/layouts/*.{js,jsx,ts,tsx,svelte,astro}'
             ],
-            //defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-            safelist: [
+            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+            safelist: 
                 {
-                    standard: ["html", "body", /owl$/,".owl-carousel.owl-loaded"],
-                    deep: [".about-me-more"],
+                    standard: ['random', 'yep', 'button', /^nav-/],
+                    deep: [],
                     greedy: [],
                     keyframes: [],
                     variables: [],
                 }
                 
-                ]
+                
         },
       },
   }
