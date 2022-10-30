@@ -11,7 +11,7 @@ module.exports = {
             safelist: 
                 {
                     standard: ['random', 'yep', 'button', /^nav-/],
-                    deep: [],
+                    deep: ['about-me-more'],
                     greedy: [],
                     keyframes: [],
                     variables: [],
