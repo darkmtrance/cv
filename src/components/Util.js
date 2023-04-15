@@ -2,8 +2,6 @@
 // Importar la biblioteca moment.js
 import moment from 'moment';
 
-//let moment = require('moment');
-
 export function calcYearsAndMonths(fromDate, toDate) {
   // Calcular la diferencia en años y meses entre las dos fechas utilizando la función `diff` de moment.js
   let diff = moment(toDate).diff(moment(fromDate), 'years', true);

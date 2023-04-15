@@ -1,5 +1,5 @@
 ---
-import {calcYearsAndMonths} from './Util.js';
+//import {calcYearsAndMonths} from './Util.js';
 
 export interface Props {
     experience: string;
@@ -7,16 +7,11 @@ export interface Props {
 
 const { experience } = Astro.props;
 
-var fromDate = new Date(2020, 9, 1); // 1 de Oct de 2020
-var toDate = new Date(); // Today
+// var fromDate = new Date(2020, 9, 1); // 1 de Oct de 2020
+// var toDate = new Date(); // Today
 
-var yearsAndMonths = calcYearsAndMonths(fromDate, toDate);
-let resultadoFinal = yearsAndMonths.years + ' Años ' + yearsAndMonths.months + ' Meses';
-
-// fromDate = new Date(2017, 3, 1); 
-// toDate = new Date(2020,8,30);
-// yearsAndMonths = calcYearsAndMonths(fromDate, toDate);
-// console.log(yearsAndMonths.years +' '+yearsAndMonths.months);
+// var yearsAndMonths = calcYearsAndMonths(fromDate, toDate);
+// let resultadoFinal = yearsAndMonths.years + ' Años ' + yearsAndMonths.months + ' Meses';
 
 ---
 
@@ -38,7 +33,7 @@ let resultadoFinal = yearsAndMonths.years + ' Años ' + yearsAndMonths.months + 
                                         Hasta
                                         <span class="font-weight-semibold">Presente</span>
                                     </span>
-                                    <p class="text-color-light">({resultadoFinal})</p>
+                                    <p class="text-color-light" id="resultadoFinal"></p>
                                     <span class="company text-color-light font-weight-semibold">
                                         Indra Company
                                         <span class="company-location text-color-light font-weight-normal text-uppercase">Perú</span>
