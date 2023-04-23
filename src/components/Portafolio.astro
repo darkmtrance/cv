@@ -14,6 +14,11 @@ const react = generateImage('src/images/rsz_1react.png', {
   formats: ['webp', 'avif'],
 });
 
+const security = generateImage('src/images/rsz_11swagger-ui.png', {
+    widths: [540],
+  formats: ['webp', 'avif'],
+});
+
 export interface Props {
     portafolio: string;
 };
@@ -128,6 +133,66 @@ const { portafolio } = Astro.props;
                                                 <a
                                                     class="text-decoration-none"
                                                     href="https://github.com/darkmtrance/urlshortener-reactjs"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <h2
+                    class="font-weight-extra-bold text-uppercase"
+                >
+                </h2>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://auth.matomaylla.com/swagger-ui/index.html">
+                                    <img
+                                        src={security.webp[0].url}
+                                        alt
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                            Security API
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        This is a Security API using Spring Boot 3.0 and JSON Web Tokens (JWT)
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://github.com/darkmtrance/security-api"
                                                     title="Share"
                                                     ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
                                                 >
