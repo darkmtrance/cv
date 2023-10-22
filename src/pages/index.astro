@@ -11,6 +11,7 @@ import Experience from '../components/Experience.astro';
 import Correo from '../components/Correo.jsx';
 import PerfilProfesional from '../components/PerfilProfesional.jsx';
 import Portafolio from '../components/Portafolio.astro';
+import mixpanel from 'mixpanel-browser';
 
 import '../styles/bootstrap.min.css';
 import '../styles/all.min.css';
@@ -47,6 +48,11 @@ const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
   formats: ['webp', 'avif'],
 });
 
+mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
+
+mixpanel.track('Signed Up', {
+  'Signup Type': 'Referral',
+});
 
 ---
 

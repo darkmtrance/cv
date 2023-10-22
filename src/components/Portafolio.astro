@@ -1,5 +1,6 @@
 ---
 import { generateImage } from 'astro-eleventy-img';
+import mixpanel from 'mixpanel-browser';
 
 
 const prisma = generateImage('src/images/rsz_prismamatomayllacom.png', {
@@ -23,7 +24,18 @@ export interface Props {
     portafolio: string;
 };
 
+const egresado = generateImage('src/images/egresado.png', {
+    widths: [540],
+    formats: ['webp', 'avif'],
+});
+
 const { portafolio } = Astro.props;
+
+mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
+
+mixpanel.track('Signed Up', {
+  'Signup Type': 'Referral',
+});
 
 ---
 <section id="blog" class="section section-no-border bg-color-dark m-0">
@@ -193,6 +205,61 @@ const { portafolio } = Astro.props;
                                                 <a
                                                     class="text-decoration-none"
                                                     href="https://github.com/darkmtrance/security-api"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://egresado.matomaylla.com/consulta.html">
+                                    <img
+                                        src={egresado.webp[0].url}
+                                        alt
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                        View certificates of users
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        It is a platform that allows users to verify and access their certificates conveniently.
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            
+                                            
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://gitlab.com/my-projects1765733/egresados-api"
                                                     title="Share"
                                                     ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
                                                 >
