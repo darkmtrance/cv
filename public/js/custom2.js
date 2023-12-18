@@ -1,11 +1,18 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let fromDate = new Date(2020, 9, 1); // 1 de Oct de 2020
+    let fromDate = new Date(2023, 1, 1); // 1 de Feb de 2023
     let toDate = new Date(); // Today
 
     let yearsAndMonths = calcYearsAndMonths(fromDate, toDate);
-    let resultadoFinal = yearsAndMonths.years + ' Años ' + yearsAndMonths.months + ' Meses';
+    let resultadoFinal = "";
+    if (yearsAndMonths.years === 0 ) {
+      resultadoFinal = yearsAndMonths.months + ' Meses';
+    } else if (yearsAndMonths.years === 1 ) {
+      resultadoFinal = yearsAndMonths.years + ' Año ' + yearsAndMonths.months + ' Meses';
+    } else {
+      resultadoFinal = yearsAndMonths.years + ' Años ' + yearsAndMonths.months + ' Meses';
+    }
 
     document.getElementById("resultadoFinal").innerHTML = "("+resultadoFinal+")";
 
