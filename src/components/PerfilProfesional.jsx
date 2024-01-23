@@ -3,13 +3,13 @@ import {useState} from 'react'
 function PerfilProfesional() {
   const [text, setText] = useState({
     text:
-    "Profesional del área informática entusiasta de la investigación, desarrollo de software, con alta capacidad para el análisis, diseño e implementación, así como coordinar el trabajo en equipos para lograr un trabajo rápido, y adaptable a las necesidades del cliente.",
+    "Soy un apasionado profesional del área informática, con más de 13 años de experiencia dedicados a la investigación y desarrollo de software. Mi fortaleza radica en mi capacidad para analizar, diseñar e implementar soluciones innovadoras.",
     hidden: false
   });
   
   const updateText = () => {
     setText(previousState => {
-      return { ...previousState, text: "Profesional del área informática entusiasta de la investigación, desarrollo de software, con alta capacidad para el análisis, diseño e implementación, así como coordinar el trabajo en equipos para lograr un trabajo rápido, y adaptable a las necesidades del cliente. Comprometido con el desarrollo del país a través de la generación de valor para la organización que me convoque.", hidden: true }
+      return { ...previousState, text: "Soy un apasionado profesional del área informática, con más de 13 años de experiencia dedicados a la investigación y desarrollo de software. Mi fortaleza radica en mi capacidad para analizar, diseñar e implementar soluciones innovadoras. Soy hábil en la coordinación efectiva de equipos, impulsando un rendimiento ágil y adaptándome a las necesidades cambiantes del cliente. Mi compromiso inquebrantable con la generación de valor me distingue, y estoy ansioso por aportar mis habilidades y conocimientos para impulsar el éxito de la organización que me convoque.", hidden: true }
     });
   }
 
