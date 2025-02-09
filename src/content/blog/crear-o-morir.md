@@ -16,12 +16,14 @@ tags: ['Libros']
 <div style="text-align: center;">
     <img src="../../img/blog/libro_portada.jpg" alt="Description" width="200" />
 </div>
-
+</br>
+<div style="text-align: justify; text-justify: inter-word;">
 En el mundo de la innovación y la emprendeduría, hay un libro que se ha convertido en una referencia obligatoria: *Crear o Morir* de Andrés Oppenheimer. Publicado en 2019, este libro es una llamada a la acción para aquellos que buscan transformar su vida y cambiar el mundo.  
 
 Antes de sumergirnos en el resumen, tómate un momento para reflexionar: en un mundo donde la tecnología avanza a la velocidad de la luz, quedarse en lo mismo es como esperar con ansias el crecimiento del césped... ¡aunque a veces puede ser relajante, la verdadera emoción está en crear y transformar!  
 
 A continuación, te presento un resumen del libro *Crear o Morir* de Andrés Oppenheimer, que te inspirará a reinventarte y a abrazar el cambio con entusiasmo:  
+
 
 ## Innovar es cuestión de supervivencia  
 
@@ -48,3 +50,4 @@ El libro destaca casos de países y empresas que han apostado por la creatividad
 Innovar no se trata solo de novedad, sino de generar un impacto positivo que transforme realidades. Es la oportunidad de diseñar un futuro más próspero y equitativo, y sí, de experimentar esa emoción única que se siente cuando algo verdaderamente revolucionario toma forma.  
 
 *(Porque, admitámoslo, innovar es mucho más emocionante que ver cómo crece el césped... ¡aunque al menos en ambos casos esperamos resultados sorprendentes!)*  
+</div>
