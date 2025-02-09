@@ -1,0 +1,273 @@
+---
+// Importar utilidades y tipos
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// Obtener todos los posts y ordenarlos por fecha
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => 
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+// Función auxiliar para formatear fechas
+const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+};
+
+// Función para obtener tiempo de lectura
+const getReadingTime = (content: string) => {
+    const wordsPerMinute = 200;
+    const words = content.split(/\s+/).length;
+    return Math.ceil(words / wordsPerMinute);
+};
+
+// Asegurarse de que la ruta del post sea correcta
+const getPostPath = (slug: string) => `/blog/${slug}`;
+
+// Obtener tags únicos de todos los posts
+const allTags = [...new Set(
+    sortedPosts.flatMap(post => post.data.tags)
+)].sort();
+---
+
+<section id="blog" class="section section-no-border bg-color-dark m-0">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col">
+                <h2 class="text-color-light font-weight-extra-bold text-uppercase">
+                    Blog
+                </h2>
+            </div>
+            <div class="col-auto">
+                <div class="blog-filters">
+                    <button class="btn btn-primary btn-sm active" data-filter="all">
+                        Todos
+                    </button>
+                    {allTags.map(tag => (
+                        <button class="btn btn-primary btn-sm" data-filter={tag}>
+                            {tag}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="posts-container">
+            {sortedPosts.map((post) => (
+                <div class="col-lg-4 col-md-6 mb-4" data-tags={post.data.tags.join(' ')}>
+                    <article class="custom-post-blog bg-color-darken h-100">
+                        <div class="post-image position-relative">
+                            {post.data.image && (
+                                <img 
+                                    src={post.data.image.url} 
+                                    alt={post.data.image.alt}
+                                    class="img-fluid w-100"
+                                    loading="lazy"
+                                />
+                            )}
+                            <div class="post-date position-absolute">
+                                {formatDate(post.data.pubDate)}
+                            </div>
+                        </div>
+                        
+                        <div class="post-content p-4">
+                            <div class="post-tags mb-2">
+                                {post.data.tags.map((tag) => (
+                                    <span class="badge bg-primary me-1">
+                                        #{tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <h3 class="font-weight-bold text-color-light text-4 mb-2">
+                                <a href={getPostPath(post.slug)} class="text-color-light text-decoration-none hover-effect">
+                                    {post.data.title}
+                                </a>
+                            </h3>
+                            
+                            <div class="post-meta mb-3">
+                                <span class="custom-text-color-2">
+                                    <i class="far fa-user me-1"></i> 
+                                    {post.data.author}
+                                </span>
+                                <span class="custom-text-color-2 ms-3">
+                                    <i class="far fa-clock me-1"></i>
+                                    {getReadingTime(post.body)} min de lectura
+                                </span>
+                            </div>
+
+                            <p class="custom-text-color-2 line-clamp-3">
+                                {post.data.description}
+                            </p>
+
+                            <a href={getPostPath(post.slug)} class="btn btn-outline-primary btn-sm mt-3">
+                                Leer más <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            ))}
+        </div>
+
+        <div class="row mt-4">
+            <div class="col text-center">
+                <a href="/blog" class="btn btn-primary btn-lg">
+                    Ver todos los artículos
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.custom-post-blog {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-post-blog:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.post-image {
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.post-image img {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.custom-post-blog:hover .post-image img {
+    transform: scale(1.05);
+}
+
+.post-date {
+    bottom: 0;
+    right: 0;
+    background: var(--bs-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px 0 0 0;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.post-tags .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    transition: all 0.2s ease;
+}
+
+.post-tags .badge:hover {
+    opacity: 0.8;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hover-effect {
+    transition: color 0.2s ease;
+}
+
+.hover-effect:hover {
+    color: var(--bs-primary) !important;
+}
+
+.blog-filters {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.blog-filters .btn {
+    text-transform: capitalize;
+    margin: 0.25rem;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: none;
+    background-color: var(--bs-primary);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.blog-filters .btn.active {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.blog-filters .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .blog-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .blog-filters .btn {
+        margin: 0.25rem;
+    }
+}
+
+/* Estilos para la animación de filtrado */
+.col-lg-4 {
+    transition: all 0.3s ease-in-out;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.blog-filters button');
+    const postsContainer = document.getElementById('posts-container');
+    const postItems = postsContainer.querySelectorAll('.col-lg-4');
+
+    const filterPosts = (filter) => {
+        postItems.forEach(post => {
+            const tags = post.dataset.tags.split(' ');
+            const shouldShow = filter === 'all' || tags.includes(filter);
+            
+            // Usar animación para suavizar las transiciones
+            if (shouldShow) {
+                post.style.display = '';
+                post.style.opacity = '1';
+                post.style.transform = 'translateY(0)';
+            } else {
+                post.style.opacity = '0';
+                post.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    post.style.display = 'none';
+                }, 300);
+            }
+        });
+    };
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Actualizar estado activo de los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Aplicar filtro
+            const filter = button.dataset.filter;
+            filterPosts(filter);
+        });
+    });
+});
+</script>

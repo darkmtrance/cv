@@ -1,0 +1,95 @@
+---
+import Layout from './Layout.astro';
+import { formatDate } from '../utils/dates.js';
+
+import '../styles/bootstrap.min.css';
+import '../styles/all.min.css';
+import '../styles/animate.compat.css';
+import '../styles/simple-line-icons.min.css';
+import '../styles/owl.carousel.min.css';
+import '../styles/owl.theme.default.min.css';
+import '../styles/magnific-popup.min.css';
+
+import '../styles/theme.css';
+import '../styles/theme-elements.css';
+import '../styles/theme-blog.css';
+//import '../styles/demo-resume-dark.css';
+import '../styles/skin-resume-dark.css';
+
+import '../vendor/rs-plugin/css/settings.css';
+import '../vendor/rs-plugin/css/layers.css';
+import '../vendor/rs-plugin/css/navigation.css';
+
+import '../styles/default.css';
+
+import Footer from './Footer.astro';
+
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-grey-light-scale-1 page-header-md">
+            <div class="container">
+                <div class="row">
+                    <!--div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <h1 class="text-dark font-weight-bold text-8">{frontmatter.title}</h1>
+                        <span class="sub-title text-dark"></span>
+                    </div-->
+                    <div class="col-md-12 align-self-center order-1">
+                        <ul class="breadcrumb d-block text-center">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li class="active">{frontmatter.title}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container py-4">
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts single-post">
+                    <article class="post post-large blog-single-post border-0 m-0 p-0">
+                        <div class="post-image ms-0">
+                            <img 
+                                src={frontmatter.image.url2} 
+                                alt={frontmatter.image.alt}
+                                class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                            />
+                        </div>
+
+                        <div class="post-date ms-0">
+                            <span class="day">{new Date(frontmatter.pubDate).getDate()}</span>
+                            <span class="month">{new Date(frontmatter.pubDate).toLocaleString('default', { month: 'short' })}</span>
+                        </div>
+
+                        <div class="post-content ms-0">
+                            <h2 class="font-weight-semi-bold">{frontmatter.title}</h2>
+
+                            <div class="post-meta">
+                                <span><i class="far fa-user"></i> By <a href="#">{frontmatter.author}</a></span>
+                                {frontmatter.tags.map((tag) => (
+                                    <span><i class="far fa-folder"></i> <a href="#">{tag}</a></span>
+                                ))}
+                            </div>
+
+                            <div class="content">
+                                <slot />
+                            </div>
+
+                            <!--div class="post-block mt-5 post-share">
+                                <h4 class="mb-3">Share this Post</h4>
+                            </div-->
+                            
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <Footer />
+</Layout>

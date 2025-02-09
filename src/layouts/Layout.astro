@@ -1,18 +1,10 @@
 ---
-//import { PurgeCSS } from 'purgecss'
-
-
-
-//const purgecss = await new PurgeCSS().purge('./purgecss.config.cjs');
-
 
 export interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
-
-
 
 ---
 
@@ -29,7 +21,7 @@ const { title } = Astro.props;
         <meta name="generator" content={Astro.generator} />
 		<meta name="keywords" content="WebSite Template" />
 		<meta name="description" content="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
-		<meta name="author" content="okler.net">
+		<meta name="author" content="">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -44,10 +36,12 @@ const { title } = Astro.props;
 		<link id="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet" type="text/css">
 
 		<!-- Head Libs -->
-		<script is:inline src="vendor/modernizr/modernizr.min.js"></script>
+		<script is:inline src="../vendor/modernizr/modernizr.min.js"></script>
 
 	</head>
-    <body data-plugin-scroll-spy data-plugin-options="{'target': '.wrapper-spy'}">
+
+	<body data-plugin-page-transition>
+    <!--body data-plugin-scroll-spy data-plugin-options="{'target': '.wrapper-spy'}"-->
 		<slot />
 	</body>
 </html>    

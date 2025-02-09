@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+import '../../styles/bootstrap.min.css';
+import '../../styles/all.min.css';
+import '../../styles/animate.compat.css';
+import '../../styles/simple-line-icons.min.css';
+import '../../styles/owl.carousel.min.css';
+import '../../styles/owl.theme.default.min.css';
+import '../../styles/magnific-popup.min.css';
+
+import '../../styles/theme.css';
+import '../../styles/theme-blog.css';
+import '../../styles/theme-elements.css';
+import '../../styles/theme-shop.css';
+
+import '../../vendor/rs-plugin/css/settings.css';
+import '../../vendor/rs-plugin/css/layers.css';
+import '../../vendor/rs-plugin/css/navigation.css';
+
+import '../../styles/default.css';
+import Footer from '../../layouts/Footer.astro';
+
+// Obtener la categoría seleccionada de los parámetros de URL
+const selectedTag = Astro.url.searchParams.get('tag');
+
+// Obtener los posts
+const posts = await getCollection('blog');
+---
+<Layout title="Blog">
+    <div class="body">
+        <div role="main" class="main">
+            <!-- Featured Posts Carousel -->
+            <div class="owl-carousel owl-carousel-light owl-carousel-light-init-fadeIn owl-theme manual dots-inside dots-horizontal-center dots-light show-dots-hover nav-inside nav-inside-plus nav-dark nav-md nav-font-size-md show-nav-hover mb-0" data-plugin-options="{'autoplayTimeout': 7000}" data-dynamic-height="['600px','600px','600px','550px','500px']" style="height: 600px;">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage">
+                        {posts.slice(0,5).map((post) => (
+
+                                <div class="owl-item position-relative overlay overlay-show overlay-op-3">
+                                    <a href={`/blog/${post.slug}`} class="text-decoration-none">
+                                        <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" style={`background-image: url(${post.data.image.url}); background-size: cover; background-position: center;`}></div>
+                                        <div class="container position-relative z-index-3 h-100">
+                                            <div class="row justify-content-center align-items-end h-100">
+                                                <div class="col pb-2 mb-4 appear-animation" data-appear-animation="fadeInDownShorter">
+                                                    <h2 class="text-light text-9 font-weight-bold mb-2">{post.data.title}</h2>
+                                                    <p class="text-light opacity-6 text-4">{post.data.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                        ))}
+                    </div>
+                </div>
+                <div class="owl-nav">
+                    <button type="button" role="presentation" class="owl-prev"></button>
+                    <button type="button" role="presentation" class="owl-next"></button>
+                </div>
+            </div>
+
+                          <!-- Categories Section -->
+                          <section class="section border-0 mt-0 mb-4">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col pt-2 text-center">
+                                          <h3 class="text-4 text-primary m-0 font-weight-bold d-inline-block pe-4 mb-3">EXPLORAR CATEGORÍAS:</h3>
+                                          <div class="d-inline-block">
+                                              <button class="btn py-3 px-4 text-1 btn-light text-uppercase font-weight-bold me-2 mb-2 category-btn active" data-category="all">Todos</button>
+                                              {Array.from(new Set(posts.flatMap(post => post.data.tags))).map(tag => (
+                                                  <button class="btn py-3 px-4 text-1 btn-light text-uppercase font-weight-bold me-2 mb-2 category-btn" data-category={tag}>{tag}</button>
+                                              ))}
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+            <!-- Blog Posts Grid -->
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="blog-posts">
+                            <div class="masonry-loader masonry-loader-showing">
+                                <div class="masonry row" data-plugin-masonry data-plugin-options="{'itemSelector': '.masonry-item'}">
+                                    {posts
+                                        .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+                                        .filter(post => selectedTag ? post.data.tags.includes(selectedTag) : true)
+                                        .map((post) => (
+                                            <div class="masonry-item no-default-style col-md-4">
+                                                <article class="post post-medium border-0 pb-0 mb-5">
+                                                    <div class="post-date ms-0">
+                                                        <span class="day">{new Date(post.data.pubDate).getDate()}</span>
+                                                        <span class="month">{new Date(post.data.pubDate).toLocaleString('default', { month: 'short' })}</span>
+                                                    </div>
+                                                    <div class="post-image">
+                                                        <a href={`/blog/${post.slug}`}>
+                                                            <img src={post.data.image.url} class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt={post.data.title} />
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2">
+                                                            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                                                        </h2>
+                                                        <p>{post.data.description}</p>
+                                                        <div class="post-meta">
+                                                            <span><i class="far fa-user"></i> By <a href="#">{post.data.author}</a></span>
+                                                            <span><i class="far fa-folder"></i> {post.data.tags.join(', ')}</span>
+                                                            <span class="d-block mt-2">
+                                                                <a href={`/blog/${post.slug}`} class="btn btn-xs btn-light text-1 text-uppercase">Read More</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</Layout>
+<script is:inline src="/vendor/jquery/jquery.min.js"></script>
+<script is:inline src="/vendor/jquery.appear/jquery.appear.min.js"></script>
+		<script is:inline src="vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script is:inline src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+		<script is:inline src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script is:inline src="vendor/jquery.validation/jquery.validate.min.js"></script>
+		<script is:inline src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script is:inline src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+		<script is:inline src="vendor/lazysizes/lazysizes.min.js"></script>
+		<script is:inline src="vendor/isotope/jquery.isotope.min.js"></script>
+
+<script is:inline src="/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+<script is:inline src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script is:inline src="vendor/vide/jquery.vide.min.js"></script>
+		<script is:inline src="vendor/vivus/vivus.min.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script is:inline src="js/theme.js"></script>        
+
+<script is:inline src="/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script is:inline src="/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+<!-- Current Page Views -->
+<script is:inline src="js/views/view.home.js"></script>
+<!-- Theme Initialization Files -->
+<script is:inline src="js/theme.init.js"></script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const posts = document.querySelectorAll('.masonry-item');
+
+      categoryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              categoryButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+
+              const selectedCategory = button.dataset.category;
+
+              posts.forEach(post => {
+                  const postTagsElement = post.querySelector('.post-meta');
+                  const postTags = postTagsElement.textContent.toLowerCase();
+
+                  if (selectedCategory === 'all') {
+                      post.style.display = 'block';
+                  } else {
+                      post.style.display = postTags.includes(selectedCategory.toLowerCase()) ? 'block' : 'none';
+                  }
+              });
+          });
+      });
+  });
+  </script>

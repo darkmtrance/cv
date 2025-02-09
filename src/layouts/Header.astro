@@ -7,7 +7,7 @@ export interface Props {
     skills: string;
     certificacion: string;
     recommendations: string;
-    portafolio: string;
+    blog: string;
     sayHello: string;
 }
 
@@ -18,7 +18,7 @@ const { skills } = Astro.props;
 const { certificacion } = Astro.props;
 const { recommendations } = Astro.props;
 const { sayHello } = Astro.props;
-const {portafolio} = Astro.props;
+const { blog } = Astro.props;
 
 ---
 
@@ -72,7 +72,7 @@ const {portafolio} = Astro.props;
                                         <li>
                                             <a data-hash href="#blog" class="nav-link text-color-dark bg-color-primary">
                                                 <i class="icon-bubbles icons"></i>
-                                                <span class="custom-tooltip text-color-dark">{portafolio}</span>
+                                                <span class="custom-tooltip text-color-dark">{blog}</span>
                                             </a>
                                         </li>
                                         <li>

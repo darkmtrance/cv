@@ -8,5 +8,8 @@ export default defineConfig({
     ssr: {
       external: ["@11ty/eleventy-img"]
     }
+  },
+  routes: {
+    '/blog/[...slug]': 'src/pages/blog/[...slug].astro',
   }
 });

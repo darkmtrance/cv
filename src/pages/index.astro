@@ -8,9 +8,9 @@ import Idiomas from '../components/Idiomas.astro';
 import Educacion from '../components/Educacion.astro';
 import Recomendacion from '../components/Recomendacion.astro';
 import Experience from '../components/Experience.astro';
+import Blog from '../components/blog.astro';
 import Correo from '../components/Correo.jsx';
 import PerfilProfesional from '../components/PerfilProfesional.jsx';
-import Portafolio from '../components/Portafolio.astro';
 import mixpanel from 'mixpanel-browser';
 
 import '../styles/bootstrap.min.css';
@@ -23,6 +23,7 @@ import '../styles/magnific-popup.min.css';
 
 import '../styles/theme.css';
 import '../styles/theme-elements.css';
+import '../styles/theme-blog.css';
 import '../styles/demo-resume-dark.css';
 import '../styles/skin-resume-dark.css';
 
@@ -32,7 +33,7 @@ const education = "Educación";
 const skills = "Habilidades";
 const certificacion = "Certificaciones";
 const recommendations = "Recomendaciones";
-const portafolio = "Portafolio";
+const blog = "Blog";
 const sayHello = "Hola Mundo";
 const fechaNacimiento = "26/04/1984";
 const estadoCivil = "Soltero";
@@ -58,7 +59,7 @@ mixpanel.track('Signed Up', {
 
 <Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
     <div class="body">
-        <Header aboutme={aboutme} experience={experience} education={education} skills={skills} certificacion={certificacion} recommendations={recommendations} sayHello={sayHello} portafolio={portafolio} />
+        <Header aboutme={aboutme} experience={experience} education={education} skills={skills} certificacion={certificacion} recommendations={recommendations} sayHello={sayHello} blog={blog} />
         <div role="main" class="main">
 
             <div id="about-me">
@@ -66,23 +67,6 @@ mixpanel.track('Signed Up', {
                     
                     <SobreMi />
                     
-                    <!--ul class="social-icons custom-social-icons">
-                        <li class="social-icons-facebook">
-                            <a href="http://www.facebook.com/" target="_blank" title="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="social-icons-twitter">
-                            <a href="http://www.twitter.com/" target="_blank" title="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="social-icons-youtube">
-                            <a href="http://www.youtube.com/" target="_blank" title="Youtube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </li>
-                    </ul-->
                 </section>
 
                 <div class="custom-about-me-links bg-color-dark">
@@ -122,36 +106,32 @@ mixpanel.track('Signed Up', {
                             <div class="col">
 
                                 <div class="custom-box-details bg-color-darken custom-box-shadow-1 col-lg-6 ms-5 mb-5 mb-lg-4 float-end clearfix">
-                                    <h4>Personal Details</h4>
+                                    <h4>Datos Personal</h4>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <ul class="custom-list-style-1 p-0 mb-0">
                                                 <li>
-                                                    <span class="text-color-light">Fecha de Nacimiento:</span>
+                                                    <span class="text-color-light">Fecha de Nacimiento: </span>
                                                     <span class="custom-text-color-2">{fechaNacimiento}</span>
                                                 </li>
                                                 <li>
-                                                    <span class="text-color-light">Estado Civil:</span>
+                                                    <span class="text-color-light">Estado Civil: </span>
                                                     <span class="custom-text-color-2">{estadoCivil}</span>
                                                 </li>
                                                 <li>
-                                                    <span class="text-color-light">Nacionalidad:</span>
+                                                    <span class="text-color-light">Nacionalidad: </span>
                                                     <span class="custom-text-color-2">{nacionalidad}</span>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-md-6">
                                             <ul class="custom-list-style-1 p-0 mb-0">
-                                                <!--li>
-                                                    <span class="text-color-light">Skype:</span>
-                                                    <span class="custom-text-color-2"><a class="custom-text-color-2" href="skype:yourskype?chat">yourskype</a></span>
-                                                </li-->
                                                 <li>
-                                                    <span class="text-color-light">Teléfono:</span>
+                                                    <span class="text-color-light">Teléfono: </span>
                                                     <span class="custom-text-color-2"><a class="custom-text-color-2" href="tel:991214131">{telefono}</a></span>
                                                 </li>
                                                 <li>
-                                                    <span class="text-color-light">EMAIL:</span>
+                                                    <span class="text-color-light">EMAIL: </span>
                                                     <span class="custom-text-color-2"><a class="custom-text-color-2" href="mailto:mtomaylla@incafact.com">{email}</a></span>
                                                 </li>
                                             </ul>
@@ -246,8 +226,6 @@ mixpanel.track('Signed Up', {
             <Certificacion certificacion={certificacion} />
 
             <Recomendacion recommendations={recommendations} />
-
-            <Portafolio portafolio={portafolio} />
             
 
             <div id="say-hello" class="container-fluid" data-spy-offset="40">
@@ -281,17 +259,6 @@ mixpanel.track('Signed Up', {
                                             </span>
                                         </span>
                                     </a>
-                                    <!--a href="skype:yourskype?chat" class="text-decoration-none">
-                                        <span class="feature-box custom-feature-box align-items-center mb-4">
-                                            <span class="custom-feature-box-icon">
-                                                <i class="icon-social-skype icons text-color-light"></i>
-                                            </span>
-                                            <span class="feature-box-info">
-                                                <span class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Skype</span>
-                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">yourskype</strong>
-                                            </span>
-                                        </span>
-                                    </a-->
                                     <span class="feature-box custom-feature-box align-items-center">
                                         <span class="custom-feature-box-icon">
                                             <i class="icon-share icons text-color-light"></i>
@@ -319,7 +286,7 @@ mixpanel.track('Signed Up', {
                     </div>
                 </div>
             </div>
-
+            <Blog />
             <Footer />
         </div>
     </div>
