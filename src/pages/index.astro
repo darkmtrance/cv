@@ -1,0 +1,355 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../layouts/Header.astro';
+import Footer from '../layouts/Footer.astro';
+import Certificacion from '../components/Certificacion.astro';
+import SobreMi from '../components/SobreMi.astro';
+import Idiomas from '../components/Idiomas.astro';
+import Educacion from '../components/Educacion.astro';
+import Recomendacion from '../components/Recomendacion.astro';
+import Experience from '../components/Experience.astro';
+import Correo from '../components/Correo.jsx';
+import PerfilProfesional from '../components/PerfilProfesional.jsx';
+import Portafolio from '../components/Portafolio.astro';
+import mixpanel from 'mixpanel-browser';
+
+import '../styles/bootstrap.min.css';
+import '../styles/all.min.css';
+import '../styles/animate.compat.css';
+import '../styles/simple-line-icons.min.css';
+import '../styles/owl.carousel.min.css';
+import '../styles/owl.theme.default.min.css';
+import '../styles/magnific-popup.min.css';
+
+import '../styles/theme.css';
+import '../styles/theme-elements.css';
+import '../styles/demo-resume-dark.css';
+import '../styles/skin-resume-dark.css';
+
+const aboutme = "Perfil Profesional";
+const experience = "Experiencia";
+const education = "Educación";
+const skills = "Habilidades";
+const certificacion = "Certificaciones";
+const recommendations = "Recomendaciones";
+const portafolio = "Portafolio";
+const sayHello = "Hola Mundo";
+const fechaNacimiento = "26/04/1984";
+const estadoCivil = "Soltero";
+const nacionalidad = "Peruana";
+const email = "mtomaylla@incafact.com";
+const telefono = "+511 991214131";
+
+import { generateImage } from 'astro-eleventy-img';
+
+const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
+  // The options here are passed directly to eleventy-img
+  widths: [4200],
+  formats: ['webp', 'avif'],
+});
+
+mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
+
+mixpanel.track('Signed Up', {
+  'Signup Type': 'Referral',
+});
+
+---
+
+<Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
+    <div class="body">
+        <Header aboutme={aboutme} experience={experience} education={education} skills={skills} certificacion={certificacion} recommendations={recommendations} sayHello={sayHello} portafolio={portafolio} />
+        <div role="main" class="main">
+
+            <div id="about-me">
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.webp[0].url}>
+                    
+                    <SobreMi />
+                    
+                    <!--ul class="social-icons custom-social-icons">
+                        <li class="social-icons-facebook">
+                            <a href="http://www.facebook.com/" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="social-icons-twitter">
+                            <a href="http://www.twitter.com/" target="_blank" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="social-icons-youtube">
+                            <a href="http://www.youtube.com/" target="_blank" title="Youtube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul-->
+                </section>
+
+                <div class="custom-about-me-links bg-color-dark">
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            <div class="col-lg-3 text-center custom-xs-border-bottom p-0">
+                                <a data-hash href="#about-me" class="text-decoration-none">
+                                    <span class="custom-nav-button text-color-light">
+                                        <i class="icon-earphones-alt icons text-color-primary"></i>
+                                        Información Personal	
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 text-center custom-xs-border-bottom p-0">
+                                <a data-hash href="#say-hello" class="text-decoration-none">
+                                    <span class="custom-nav-button custom-divisors text-color-light">
+                                        <i class="icon-envelope-open icons text-color-primary"></i>
+                                        Enviar Mensaje
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 text-center p-0">
+                                <a href="doc/CV_MichaelTomaylla_2022_en.pdf" target="_blank" class="text-decoration-none">
+                                    <span class="custom-nav-button text-color-light">
+                                        <i class="icon-cloud-download icons text-color-primary"></i>
+                                        Descargar CV
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="section section-no-border bg-color-dark m-0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+
+                                <div class="custom-box-details bg-color-darken custom-box-shadow-1 col-lg-6 ms-5 mb-5 mb-lg-4 float-end clearfix">
+                                    <h4>Personal Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="custom-list-style-1 p-0 mb-0">
+                                                <li>
+                                                    <span class="text-color-light">Fecha de Nacimiento:</span>
+                                                    <span class="custom-text-color-2">{fechaNacimiento}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-color-light">Estado Civil:</span>
+                                                    <span class="custom-text-color-2">{estadoCivil}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-color-light">Nacionalidad:</span>
+                                                    <span class="custom-text-color-2">{nacionalidad}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="custom-list-style-1 p-0 mb-0">
+                                                <!--li>
+                                                    <span class="text-color-light">Skype:</span>
+                                                    <span class="custom-text-color-2"><a class="custom-text-color-2" href="skype:yourskype?chat">yourskype</a></span>
+                                                </li-->
+                                                <li>
+                                                    <span class="text-color-light">Teléfono:</span>
+                                                    <span class="custom-text-color-2"><a class="custom-text-color-2" href="tel:991214131">{telefono}</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-color-light">EMAIL:</span>
+                                                    <span class="custom-text-color-2"><a class="custom-text-color-2" href="mailto:mtomaylla@incafact.com">{email}</a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h2 class="text-color-light font-weight-extra-bold text-uppercase">{aboutme}</h2>
+
+                                <PerfilProfesional client:visible />
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <Experience experience={experience} />
+            
+            <Educacion education={education} />
+
+            <section id="skills" class="section section-no-border bg-color-dark m-0">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-lg-8 mb-4 mb-md-0">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h2 class="text-color-light text-uppercase font-weight-extra-bold">{skills}</h2>
+                                    <div class="progress-bars custom-progress-bars">
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Start Up</span>
+                                        </div>
+
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="60%"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Innovation</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="300"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Products</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="600"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>CSS</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="progress-bars custom-progress-bars custom-md-margin-top-1">
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Javascript</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="60%"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Business</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="300"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>E-commerce</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="600"></div>
+                                        </div>
+                                        <div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+                                            <span>Creative</span>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <Idiomas />
+                    </div>
+                </div>
+            </section>
+
+            <Certificacion certificacion={certificacion} />
+
+            <Recomendacion recommendations={recommendations} />
+
+            <Portafolio portafolio={portafolio} />
+            
+
+            <div id="say-hello" class="container-fluid" data-spy-offset="40">
+                <div class="row">
+                    <div class="col-lg-6 p-0">
+                        <Correo client:visible />
+                    </div>
+                    <div class="col-lg-6 p-0">
+                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
+                            <div class="row m-0">
+                                <div class="col-half-section col-half-section-left ms-3">
+                                    <a href="mailto:you@domain.com" class="text-decoration-none">
+                                        <span class="feature-box custom-feature-box align-items-center mb-4">
+                                            <span class="custom-feature-box-icon">
+                                                <i class="icon-envelope icons text-color-light"></i>
+                                            </span>
+                                            <span class="feature-box-info">
+                                                <span class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Email</span>
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">{email}</strong>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <a href="tel:+1234657890" class="text-decoration-none">
+                                        <span class="feature-box custom-feature-box align-items-center mb-4">
+                                            <span class="custom-feature-box-icon">
+                                                <i class="icon-phone icons text-color-light"></i>
+                                            </span>
+                                            <span class="feature-box-info">
+                                                <span class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Teléfono</span>
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">{telefono}</strong>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <!--a href="skype:yourskype?chat" class="text-decoration-none">
+                                        <span class="feature-box custom-feature-box align-items-center mb-4">
+                                            <span class="custom-feature-box-icon">
+                                                <i class="icon-social-skype icons text-color-light"></i>
+                                            </span>
+                                            <span class="feature-box-info">
+                                                <span class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Skype</span>
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">yourskype</strong>
+                                            </span>
+                                        </span>
+                                    </a-->
+                                    <span class="feature-box custom-feature-box align-items-center">
+                                        <span class="custom-feature-box-icon">
+                                            <i class="icon-share icons text-color-light"></i>
+                                        </span>
+                                        <a href="https://www.linkedin.com/in/mtm2019/" class="d-flex text-decoration-none">
+                                            <span class="feature-box-info">
+                                                <span class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Follow me</span>
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">Linkedin</strong>
+                                            </span>
+                                        </a>
+                                        <a href="https://github.com/darkmtrance" class="d-flex text-decoration-none">
+                                            <span class="feature-box-info custom-both-side-border mt-2">
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">Github</strong>
+                                            </span>
+                                        </a>
+                                        <a href="https://www.credly.com/users/michael-tomaylla" class="d-flex text-decoration-none">
+                                            <span class="feature-box-info p-0 mt-2">
+                                                <strong class="font-weight-light text-color-light custom-opacity-effect-1">Credly</strong>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    </div>
+
+    <!-- Vendor -->
+    <script is:inline src="vendor/jquery/jquery.min.js"></script>
+    <script is:inline src="vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script is:inline src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script is:inline src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script is:inline src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script is:inline src="vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script is:inline src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script is:inline src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script is:inline src="vendor/lazysizes/lazysizes.min.js"></script>
+    <script is:inline src="vendor/isotope/jquery.isotope.min.js"></script>
+    <script is:inline src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script is:inline src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script is:inline src="vendor/vide/jquery.vide.min.js"></script>
+    <script is:inline src="vendor/vivus/vivus.min.js"></script>
+  
+    <!-- Theme Base, Components and Settings -->
+    <script is:inline src="js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script is:inline src="js/views/view.contact.js"></script>
+    <!-- Demo -->
+    <script is:inline src="js/demos/demo-resume.js"></script>
+    <!-- Theme Custom -->
+    <script is:inline src="js/custom.js"></script>
+    <!-- Theme Initialization Files -->
+    <script is:inline src="js/theme.init.js"></script>
+
+</Layout>

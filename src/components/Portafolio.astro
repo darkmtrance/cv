@@ -1,0 +1,285 @@
+---
+import { generateImage } from 'astro-eleventy-img';
+import mixpanel from 'mixpanel-browser';
+
+
+const prisma = generateImage('src/images/rsz_prismamatomayllacom.png', {
+  // The options here are passed directly to eleventy-img
+  widths: [540],
+  formats: ['webp', 'avif'],
+});
+
+const react = generateImage('src/images/rsz_1react.png', {
+  // The options here are passed directly to eleventy-img
+  widths: [540],
+  formats: ['webp', 'avif'],
+});
+
+const security2 = generateImage('src/images/rsz_11swagger.png', {
+    widths: [540],
+  formats: ['webp', 'avif'],
+});
+
+export interface Props {
+    portafolio: string;
+};
+
+const egresado = generateImage('src/images/egresado.png', {
+    widths: [540],
+    formats: ['webp', 'avif'],
+});
+
+const { portafolio } = Astro.props;
+
+mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
+
+mixpanel.track('Signed Up', {
+  'Signup Type': 'Referral',
+});
+
+---
+<section id="blog" class="section section-no-border bg-color-dark m-0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2
+                    class="font-weight-extra-bold text-uppercase"
+                >
+                    {portafolio}
+                </h2>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://prisma.matomaylla.com/docs/">
+                                    <img
+                                        src={prisma.webp[0].url}
+                                        
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                            Prisma API
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        This is a simple REST API CRUD about table POST, using Prisma ORM integrates seamlessly with PlanetScale.
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://github.com/darkmtrance/prisma-api"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://url.matomaylla.com/">
+                                    <img
+                                        src={react.webp[0].url}
+                                       
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                        URL Shortened 
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        This is a URL Shortener frontend solution with Reactjs using Shrtco API
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            
+                                            
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://github.com/darkmtrance/urlshortener-reactjs"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <h2
+                    class="font-weight-extra-bold text-uppercase"
+                >
+                </h2>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://auth.matomaylla.com/swagger-ui/index.html">
+                                    <img
+                                        src={security2.webp[0].url}
+                                       
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                            Security API
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        This is a Security API using Spring Boot 3.0 and JSON Web Tokens (JWT)
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://github.com/darkmtrance/security-api"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article
+                            class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="0"
+                            data-appear-animation-duration="1s"
+                        >
+                            <div class="thumb-info-wrapper">
+                                <a target="_blank" href="https://egresado.matomaylla.com/consulta.html">
+                                    <img
+                                        src={egresado.webp[0].url}
+                                        
+                                        class="img-fluid"
+                                    />
+                                </a>
+                            </div>
+                            <div class="thumb-info-caption">
+                                <div class="thumb-info-caption-text">
+                                    <h4 class="mb-2">
+                                        <a
+                                            href="#"
+                                            class="text-decoration-none text-color-light font-weight-semibold"
+                                        >
+                                        View certificates of users
+                                        </a>
+                                    </h4>
+                                    <p class="custom-text-color-2">
+                                        It is a platform that allows users to verify and access their certificates conveniently.
+                                    </p>
+                                </div>
+                                <hr class="solid m-0 mt-4 mb-2" />
+                                <div class="row justify-content-between">
+                                    <div
+                                        class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2"
+                                    >
+                                        Solution URL:
+                                        <ul class="mb-0">
+                                            
+                                            
+                                            <li>
+                                                <a
+                                                    class="text-decoration-none"
+                                                    href="https://gitlab.com/my-projects1765733/egresados-api"
+                                                    title="Share"
+                                                    ><span class="custom-feature-box-icon"><i class="icon-social-github icons text-color-light"></i></span></a
+                                                >
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!--div class="col-lg-12 col-sm-12 pt-4 mt-4 text-center">
+                <a
+                    class="btn btn-primary btn-outline custom-btn-style-2 font-weight-bold custom-border-radius-1 text-uppercase"
+                    >View All</a
+                >
+            </div-->
+        </div>
+    </div>
+</section>

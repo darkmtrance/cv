@@ -1,0 +1,53 @@
+---
+//import { PurgeCSS } from 'purgecss'
+
+
+
+//const purgecss = await new PurgeCSS().purge('./purgecss.config.cjs');
+
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+
+
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+    <head>
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+		<title>{title}</title>	
+        <meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="WebSite Template" />
+		<meta name="description" content="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
+		<meta name="author" content="okler.net">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+		<!-- Web Fonts  -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link id="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet" type="text/css">
+
+		<!-- Head Libs -->
+		<script is:inline src="vendor/modernizr/modernizr.min.js"></script>
+
+	</head>
+    <body data-plugin-scroll-spy data-plugin-options="{'target': '.wrapper-spy'}">
+		<slot />
+	</body>
+</html>    

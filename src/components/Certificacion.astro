@@ -1,0 +1,95 @@
+---
+export interface Props {
+    certificacion: string;
+};
+
+import { generateImage } from 'astro-eleventy-img';
+
+// Obtener datos de certificaciones desde Credly
+const response = await fetch('https://www.credly.com/users/michael-tomaylla/badges.json');
+const data = await response.json();
+const certifications = data.data.map(badge => ({
+    brand: getBrand(badge.badge_template.issuer.entities[0].entity.name),
+    url: badge.image_url,
+    name: badge.badge_template.name,
+    issuer: badge.badge_template.issuer.entities[0].entity.name,
+    issued_at: new Date(badge.issued_at).toLocaleDateString('es-ES')
+}));
+
+// Función para clasificar certificaciones por marca
+function getBrand(name) {
+    if (name.toLowerCase().includes('microsoft') || name.toLowerCase().includes('azure')) {
+        return 'microsoft';
+    } else if (name.toLowerCase().includes('linux') || name.toLowerCase().includes('kubernetes')) {
+        return 'linux';
+    } else if (name.toLowerCase().includes('gitlab')) {  
+        return 'gitlab';
+    } else if (name.toLowerCase().includes('github')) {  
+        return 'github';
+    } else if (name.toLowerCase().includes('aws') || name.toLowerCase().includes('amazon web services')) {
+        return 'aws';
+    } else if (name.toLowerCase().includes('google cloud') || name.toLowerCase().includes('google-cloud')) {
+        return 'gcloud';
+    } else {
+        return 'otros';
+    }
+}
+
+// Generar imágenes optimizadas
+const certificacionesConImagenes = await Promise.all(certifications.map(async certificado => {
+    try {
+        let valor = await generateImage(certificado.url, {
+            widths: [340],
+            formats: ['webp', 'avif'],
+        });
+        return { ...certificado, valor };
+    } catch (error) {
+        console.error(`Error al generar imagen para ${certificado.name}:`, error);
+        return certificado;
+    }
+}));
+
+const { certificacion } = Astro.props;
+
+---
+
+<section id="portfolio" class="section section-no-border bg-color-secondary m-0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-color-light font-weight-extra-bold text-uppercase">{certificacion}</h2>
+                <ul class="nav nav-pills sort-source custom-nav-sort mb-4" data-sort-id="portfolio" data-option-key="filter">
+                    <li class="nav-item active" data-option-value="*"><a class="nav-link active" href="#">Mostrar Todo</a></li>
+                    <li class="nav-item" data-option-value=".microsoft"><a class="nav-link" href="#">Microsoft</a></li>
+                    <li class="nav-item" data-option-value=".aws"><a class="nav-link" href="#">AWS</a></li>
+                    <li class="nav-item" data-option-value=".gcloud"><a class="nav-link" href="#">Google Cloud</a></li>
+                    <li class="nav-item" data-option-value=".linux"><a class="nav-link" href="#">The Linux Foundation</a></li>
+                    <li class="nav-item" data-option-value=".github"><a class="nav-link" href="#">Github</a></li>
+                    <li class="nav-item" data-option-value=".gitlab"><a class="nav-link" href="#">GitLab</a></li>
+                    <li class="nav-item" data-option-value=".otros"><a class="nav-link" href="#">Otros</a></li>
+                </ul>
+                <div class="sort-destination-loader sort-destination-loader-showing">
+                    <div class="row image-gallery sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
+                        {certificacionesConImagenes.map(certificado => (
+                            <div class={`col-12 col-sm-6 col-lg-3 isotope-item ${certificado.brand}`}>
+                                <div class="image-gallery-item mb-4 pb-3">
+                                    <a href={certificado.valor?.webp?.[0]?.url || certificado.url} class="lightbox-portfolio">
+                                        <span class="thumb-info custom-thumb-info-1">
+                                            <span class="thumb-info-wrapper">
+                                                <span class="thumb-info-plus"></span>
+                                                <img src={certificado.valor?.webp?.[0]?.url || certificado.url} class="img-fluid" alt={certificado.name} />
+                                            </span>
+                                            <span class="thumb-info-title">
+                                                <span class="thumb-info-type">{certificado.issued_at}</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        ))}                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
