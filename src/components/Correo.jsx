@@ -63,7 +63,7 @@ function Correo() {
                                     <h2 className="text-color-light text-uppercase font-weight-extra-bold">{sayHello}</h2>
                                     <form ref={form} onSubmit={sendEmail} id="contactForm" className="contact-form custom-form-style form-errors-light">
                                         <div className="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
-                                            <strong>¡Enviado correctamente!</strong> Tu mensaje ha sido recibido y me pondré en contacto contigo pronto.
+                                            <strong>¡Enviado correctamente!</strong> Tu mensaje ha sido recibido. Si incluiste tu correo electrónico en el mensaje, me pondré en contacto contigo a la brevedad.
                                         </div>
                                         <div className="contact-form-error alert alert-danger d-none mt-4" id="contactError">
                                             <strong>¡Error!</strong> Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.
