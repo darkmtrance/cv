@@ -3,13 +3,13 @@ import {useState} from 'react'
 function PerfilProfesional() {
   const [text, setText] = useState({
     text:
-    "Soy un apasionado profesional del área informática, con más de 13 años de experiencia dedicados a la investigación y desarrollo de software. Mi fortaleza radica en mi capacidad para analizar, diseñar e implementar soluciones innovadoras.",
+    "Más de 15 años de experiencia como Arquitecto de Información. Lideré el desarrollo de sistemas tributarios en Indra y SAPIA, logrando mejoras en calidad, rendimiento y mantenibilidad. Como mentor, brindo mentorías técnicas en tecnologías Java para equipos LATAM en Indra.",
     hidden: false
   });
   
   const updateText = () => {
     setText(previousState => {
-      return { ...previousState, text: "Soy un apasionado profesional del área informática, con más de 13 años de experiencia dedicados a la investigación y desarrollo de software. Mi fortaleza radica en mi capacidad para analizar, diseñar e implementar soluciones innovadoras. Soy hábil en la coordinación efectiva de equipos, impulsando un rendimiento ágil y adaptándome a las necesidades cambiantes del cliente. Mi compromiso inquebrantable con la generación de valor me distingue, y estoy ansioso por aportar mis habilidades y conocimientos para impulsar el éxito de la organización que me convoque.", hidden: true }
+      return { ...previousState, text: "Más de 15 años de experiencia como Arquitecto de Software. Lideré el desarrollo de sistemas tributarios en Indra y SAPIA, logrando mejoras en calidad, rendimiento y mantenibilidad. Como mentor, brindo mentorías técnicas en tecnologías Java para equipos LATAM en Indra.", hidden: true }
     });
   }
 

@@ -1,7 +1,7 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let fromDate = new Date(2023, 1, 1); // 1 de Feb de 2023
+    let fromDate = new Date(2020, 10, 1); // 1 de Feb de 2023
     let toDate = new Date(); // Today
 
     let yearsAndMonths = calcYearsAndMonths(fromDate, toDate);
