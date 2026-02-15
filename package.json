@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.0.3",
+    "@astrojs/sitemap": "^3.7.0",
     "@emailjs/browser": "^3.7.0",
     "@example/basics": "file:",
     "@types/react": "^18.0.21",

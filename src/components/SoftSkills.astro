@@ -1,0 +1,87 @@
+---
+export interface Props {
+    title: string;
+    lang?: 'es' | 'en';
+}
+
+const { title, lang = 'es' } = Astro.props;
+
+const softSkills = lang === 'en' ? [
+    { icon: "fas fa-users", name: "Technical Leadership" },
+    { icon: "fas fa-chalkboard-teacher", name: "Mentoring and Team Development" },
+    { icon: "fas fa-comments", name: "Effective Stakeholder Communication" },
+    { icon: "fas fa-lightbulb", name: "Strategic Thinking" },
+    { icon: "fas fa-project-diagram", name: "Distributed Team Management" },
+    { icon: "fas fa-chart-line", name: "Data-Driven Decision Making" },
+    { icon: "fas fa-puzzle-piece", name: "Complex Problem Solving" },
+    { icon: "fas fa-sync-alt", name: "Adaptability to Change" },
+    { icon: "fas fa-handshake", name: "Collaborative Teamwork" }
+] : [
+    { icon: "fas fa-users", name: "Liderazgo técnico" },
+    { icon: "fas fa-chalkboard-teacher", name: "Mentoría y formación de equipos" },
+    { icon: "fas fa-comments", name: "Comunicación efectiva con stakeholders" },
+    { icon: "fas fa-lightbulb", name: "Pensamiento estratégico" },
+    { icon: "fas fa-project-diagram", name: "Gestión de equipos distribuidos" },
+    { icon: "fas fa-chart-line", name: "Toma de decisiones basada en datos" },
+    { icon: "fas fa-puzzle-piece", name: "Resolución de problemas complejos" },
+    { icon: "fas fa-sync-alt", name: "Adaptabilidad al cambio" },
+    { icon: "fas fa-handshake", name: "Trabajo colaborativo" }
+];
+---
+
+<section id="soft-skills" class="section section-no-border section-secondary m-0">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-color-light text-uppercase font-weight-extra-bold mb-5">{title}</h2>
+                
+                <div class="row">
+                    {softSkills.map((skill) => (
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="soft-skill-card custom-box-shadow-1 bg-color-dark p-4 text-center">
+                                <div class="skill-icon-wrapper mb-3">
+                                    <i class={`${skill.icon} text-color-primary`}></i>
+                                </div>
+                                <h5 class="text-color-light font-weight-semibold mb-0">{skill.name}</h5>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .soft-skill-card {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        height: 100%;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .soft-skill-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        background-color: rgba(0, 136, 204, 0.05);
+    }
+
+    .skill-icon-wrapper i {
+        font-size: 2.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .soft-skill-card:hover .skill-icon-wrapper i {
+        transform: scale(1.1);
+    }
+
+    .soft-skill-card h5 {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+</style>

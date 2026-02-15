@@ -1,10 +1,79 @@
 ---
+import type { Lang } from '../i18n/utils';
 
 export interface Props {
     experience: string;
+    lang?: Lang;
 };
 
-const { experience } = Astro.props;
+const { experience, lang = 'es' } = Astro.props;
+
+const translations = {
+  es: {
+    from: "Desde",
+    to: "Hasta",
+    present: "Presente",
+    indra: {
+      position: "Arquitecto de Información",
+      resp: [
+        "Analizo, organizo tareas y desarrollo evolutivos de sistemas tributarios (ATC), mejorando rendimiento y mantenibilidad.",
+        "Implementé optimizaciones apoyadas en IA para mejorar procesos.",
+        "Mentoría técnica a <strong>+20 desarrolladores</strong> en equipos LATAM.",
+        "Impulso prácticas DevOps (CI/CD, observabilidad).",
+        "Coordiné entregas en entornos distribuidos logrando <strong>cumplimiento del 95% en hitos</strong> de proyecto."
+      ]
+    },
+    sapia: {
+      position: "Arquitecto de Información",
+      resp: [
+        "Gestioné requisitos no funcionales mejorando <strong>disponibilidad del sistema a 99.9%</strong>.",
+        "Lideré PoCs cloud reduciendo <strong>costos de infraestructura en 20%</strong>.",
+        "Optimicé rendimiento de servicios críticos reduciendo <strong>incidencias productivas en 40%</strong>."
+      ]
+    },
+    sunat: {
+      position: "Analista de Sistemas",
+      resp: [
+        "Participé en modernización de sistemas usados por <strong>+1000 usuarios internos</strong>.",
+        "Implementé mejoras que redujeron <strong>tiempos de procesamiento batch en 25%</strong>.",
+        "Contribuí a proyectos nacionales de alto impacto tributario."
+      ]
+    }
+  },
+  en: {
+    from: "From",
+    to: "To",
+    present: "Present",
+    indra: {
+      position: "Information Architect",
+      resp: [
+        "Analyze, organize tasks and develop tax system evolutives (ATC), improving performance and maintainability.",
+        "Implemented AI-supported optimizations to improve processes.",
+        "Technical mentoring to <strong>+20 developers</strong> in LATAM teams.",
+        "Drive DevOps practices (CI/CD, observability).",
+        "Coordinated deliveries in distributed environments achieving <strong>95% compliance in project milestones</strong>."
+      ]
+    },
+    sapia: {
+      position: "Information Architect",
+      resp: [
+        "Managed non-functional requirements improving <strong>system availability to 99.9%</strong>.",
+        "Led cloud PoCs reducing <strong>infrastructure costs by 20%</strong>.",
+        "Optimized performance of critical services reducing <strong>production incidents by 40%</strong>."
+      ]
+    },
+    sunat: {
+      position: "Systems Analyst",
+      resp: [
+        "Participated in modernization of systems used by <strong>+1000 internal users</strong>.",
+        "Implemented improvements that reduced <strong>batch processing times by 25%</strong>.",
+        "Contributed to national projects with high tax impact."
+      ]
+    }
+  }
+};
+
+const t = translations[lang];
 
 // var fromDate = new Date(2020, 9, 1); // 1 de Oct de 2020
 // var toDate = new Date(); // Today
@@ -25,12 +94,12 @@ const { experience } = Astro.props;
                             <div class="row">
                                 <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
                                     <span class="from text-color-light text-uppercase">
-                                        Desde
+                                        {t.from}
                                         <span class="font-weight-semibold">Oct 2020</span>
                                     </span>
                                     <span class="to text-color-light text-uppercase">
-                                        Hasta
-                                        <span class="font-weight-semibold">Presente</span>
+                                        {t.to}
+                                        <span class="font-weight-semibold">{t.present}</span>
                                     </span>
                                     <p class="text-color-light" id="resultadoFinal"></p>
                                     <span class="company text-color-light font-weight-semibold">
@@ -39,14 +108,8 @@ const { experience } = Astro.props;
                                     </span>
                                 </div>
                                 <div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
-                                    <h4 class="text-color-light font-weight-semibold">Arquitecto de Información</h4>
-                                    <p class="custom-text-color-2">- Analizo, organizo tareas y desarrollo evolutivos de sistemas tributarios (ATC), optimizando
-procesos con IA para mejorar calidad, rendimiento y mantenibilidad.</p>
-                                    <p class="custom-text-color-2">-  Mentoría técnica en Java y buenas prácticas para equipos LATAM.</p>
-                                    <p class="custom-text-color-2">-  Impulso prácticas DevOps (CI/CD, observabilidad) y estándares de arquitectura.</p>
-                                    <p class="custom-text-color-2">-  Coordinación y elaboración de análisis técnico para la Agencia Tributaria de Cataluña e Islas
-Canarias.</p>
-                                    <p class="custom-text-color-2">-  Líder de desarrollo LATAM, alineando arquitectura y entregas entre equipos distribuidos.</p>
+                                    <h4 class="text-color-light font-weight-semibold">{t.indra.position}</h4>
+                                    {t.indra.resp.map(r => <p class="custom-text-color-2" set:html={`• ${r}`}></p>)}
                                 </div>
                             </div>
                         </article>
@@ -54,11 +117,11 @@ Canarias.</p>
                             <div class="row">
                                 <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
                                     <span class="from text-color-light text-uppercase">
-                                        Desde
+                                        {t.from}
                                         <span class="font-weight-semibold">Abr 2017</span>
                                     </span>
                                     <span class="to text-color-light text-uppercase">
-                                        Hasta
+                                        {t.to}
                                         <span class="font-weight-semibold">Sep 2020</span>
                                     </span>
                                     <p class="text-color-light">(3 Años 6 Meses)</p>
@@ -68,11 +131,8 @@ Canarias.</p>
                                     </span>
                                 </div>
                                 <div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
-                                    <h4 class="text-color-light font-weight-semibold">Arquitecto de Información</h4>
-                                    <p class="custom-text-color-2">- Gestión de requisitos no funcionales y evolución de la Plataforma Única (SUNAT).
-                                    </p>
-                                    <p class="custom-text-color-2">- Pruebas de concepto de servicios en la nube como parte del equipo de preventa.
-                                    </p>
+                                    <h4 class="text-color-light font-weight-semibold">{t.sapia.position}</h4>
+                                    {t.sapia.resp.map(r => <p class="custom-text-color-2" set:html={`• ${r}`}></p>)}
                                 </div>
                             </div>
                         </article>
@@ -80,11 +140,11 @@ Canarias.</p>
                             <div class="row">
                                 <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
                                     <span class="from text-color-light text-uppercase">
-                                        Desde
+                                        {t.from}
                                         <span class="font-weight-semibold">Feb 2010</span>
                                     </span>
                                     <span class="to text-color-light text-uppercase">
-                                        Hasta
+                                        {t.to}
                                         <span class="font-weight-semibold">Dic 2016</span>
                                     </span>
                                     <p class="text-color-light">(6 Años 11 Meses)</p>
@@ -94,9 +154,8 @@ Canarias.</p>
                                     </span>
                                 </div>
                                 <div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
-                                    <h4 class="text-color-light font-weight-semibold">Analista de Sistemas</h4>
-                                    <p class="custom-text-color-2"> - Análisis, Diseño e Implementación de los Sistemas Tributarios, Administrativos y Gestión en
-Intendencia Nacional de Sistemas de Información (INSI) de la SUNAT.</p>
+                                    <h4 class="text-color-light font-weight-semibold">{t.sunat.position}</h4>
+                                    {t.sunat.resp.map(r => <p class="custom-text-color-2" set:html={`• ${r}`}></p>)}
                                 </div>
                             </div>
                         </article>

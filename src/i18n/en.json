@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "aboutMe": "About Me",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "technicalSkills": "Technical Skills",
+    "softSkills": "Soft Skills",
+    "certifications": "Certifications",
+    "recommendations": "Recommendations",
+    "portfolio": "Portfolio",
+    "sayHello": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "personalDetails": "Personal Details",
+    "birthDate": "Birth Date",
+    "civilStatus": "Civil Status",
+    "nationality": "Nationality",
+    "phone": "Phone",
+    "email": "Email",
+    "currentCompany": "Current Company",
+    "currentPosition": "Software Architect",
+    "previous": "Previous",
+    "education": "Education",
+    "seeMore": "See More"
+  },
+  "profile": {
+    "title": "Professional Profile",
+    "description": "Over 15 years of experience as a Software Architect. Led development of tax systems at Indra and SAPIA, achieving improvements in quality, performance, and maintainability. As a mentor, I provide technical mentoring in Java technologies for LATAM teams at Indra."
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "from": "From",
+    "to": "To",
+    "present": "Present",
+    "indra": {
+      "company": "Indra Company",
+      "location": "Peru/Spain",
+      "position": "Information Architect",
+      "responsibilities": [
+        "Analyze, organize tasks and develop tax system evolutives (ATC), improving performance and maintainability.",
+        "Implemented AI-supported optimizations to improve processes.",
+        "Technical mentoring to +20 developers in LATAM teams.",
+        "Drive DevOps practices (CI/CD, observability).",
+        "Coordinated deliveries in distributed environments achieving 95% compliance in project milestones."
+      ]
+    },
+    "sapia": {
+      "company": "Sapia",
+      "location": "Peru",
+      "position": "Information Architect",
+      "responsibilities": [
+        "Managed non-functional requirements improving system availability to 99.9%.",
+        "Led cloud PoCs reducing infrastructure costs by 20%.",
+        "Optimized performance of critical services reducing production incidents by 40%."
+      ]
+    },
+    "sunat": {
+      "company": "SUNAT",
+      "location": "Peru",
+      "position": "Systems Analyst",
+      "responsibilities": [
+        "Participated in modernization of systems used by +1000 internal users.",
+        "Implemented improvements that reduced batch processing times by 25%.",
+        "Contributed to national projects with high tax impact."
+      ]
+    }
+  },
+  "education": {
+    "title": "Education",
+    "university": "PONTIFICAL CATHOLIC UNIVERSITY OF PERU",
+    "degree": "Computer Engineer",
+    "year": "2014"
+  },
+  "technicalSkills": {
+    "title": "Technical Skills",
+    "languages": "Languages",
+    "frameworks": "Frameworks",
+    "architecture": "Architecture",
+    "devops": "DevOps",
+    "cloud": "Cloud",
+    "iac": "IaC",
+    "databases": "Databases",
+    "systems": "Systems",
+    "tools": "Tools"
+  },
+  "softSkills": {
+    "title": "Soft Skills",
+    "skills": [
+      "Technical leadership",
+      "Mentoring and team training",
+      "Effective communication with stakeholders",
+      "Strategic thinking",
+      "Distributed team management",
+      "Data-driven decision making",
+      "Complex problem solving",
+      "Adaptability to change",
+      "Collaborative work"
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "viewCertificate": "View Certificate",
+    "categories": {
+      "microsoft": "Microsoft",
+      "aws": "AWS",
+      "google": "Google Cloud",
+      "linux": "Linux Foundation",
+      "github": "GitHub",
+      "gitlab": "GitLab",
+      "others": "Others"
+    }
+  },
+  "recommendations": {
+    "title": "Recommendations"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "followMe": "Follow Me"
+  },
+  "common": {
+    "personalInfo": "Personal Information",
+    "sendMessage": "Send Message",
+    "single": "Single",
+    "peruvian": "Peruvian"
+  }
+}

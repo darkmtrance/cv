@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "aboutMe": "Sobre Mí",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "technicalSkills": "Habilidades Técnicas",
+    "softSkills": "Habilidades Blandas",
+    "certifications": "Certificaciones",
+    "recommendations": "Recomendaciones",
+    "portfolio": "Portafolio",
+    "sayHello": "Contacto",
+    "downloadCV": "Descargar CV"
+  },
+  "about": {
+    "personalDetails": "Datos Personales",
+    "birthDate": "Fecha de Nacimiento",
+    "civilStatus": "Estado Civil",
+    "nationality": "Nacionalidad",
+    "phone": "Teléfono",
+    "email": "Email",
+    "currentCompany": "Empresa Actual",
+    "currentPosition": "Arquitecto de Software",
+    "previous": "Previo",
+    "education": "Educación",
+    "seeMore": "Ver Más"
+  },
+  "profile": {
+    "title": "Perfil Profesional",
+    "description": "Más de 15 años de experiencia como Arquitecto de Software. Lideré el desarrollo de sistemas tributarios en Indra y SAPIA, logrando mejoras en calidad, rendimiento y mantenibilidad. Como mentor, brindo mentorías técnicas en tecnologías Java para equipos LATAM en Indra."
+  },
+  "experience": {
+    "title": "Experiencia Profesional",
+    "from": "Desde",
+    "to": "Hasta",
+    "present": "Presente",
+    "indra": {
+      "company": "Indra Company",
+      "location": "Perú/España",
+      "position": "Arquitecto de Información",
+      "responsibilities": [
+        "Analizo, organizo tareas y desarrollo evolutivos de sistemas tributarios (ATC), mejorando rendimiento y mantenibilidad.",
+        "Implementé optimizaciones apoyadas en IA para mejorar procesos.",
+        "Mentoría técnica a +20 desarrolladores en equipos LATAM.",
+        "Impulso prácticas DevOps (CI/CD, observabilidad).",
+        "Coordiné entregas en entornos distribuidos logrando cumplimiento del 95% en hitos de proyecto."
+      ]
+    },
+    "sapia": {
+      "company": "Sapia",
+      "location": "Perú",
+      "position": "Arquitecto de Información",
+      "responsibilities": [
+        "Gestioné requisitos no funcionales mejorando disponibilidad del sistema a 99.9%.",
+        "Lideré PoCs cloud reduciendo costos de infraestructura en 20%.",
+        "Optimicé rendimiento de servicios críticos reduciendo incidencias productivas en 40%."
+      ]
+    },
+    "sunat": {
+      "company": "SUNAT",
+      "location": "Perú",
+      "position": "Analista de Sistemas",
+      "responsibilities": [
+        "Participé en modernización de sistemas usados por +1000 usuarios internos.",
+        "Implementé mejoras que redujeron tiempos de procesamiento batch en 25%.",
+        "Contribuí a proyectos nacionales de alto impacto tributario."
+      ]
+    }
+  },
+  "education": {
+    "title": "Educación",
+    "university": "PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ",
+    "degree": "Ingeniero Informático",
+    "year": "2014"
+  },
+  "technicalSkills": {
+    "title": "Habilidades Técnicas",
+    "languages": "Lenguajes",
+    "frameworks": "Frameworks",
+    "architecture": "Arquitectura",
+    "devops": "DevOps",
+    "cloud": "Cloud",
+    "iac": "IaC",
+    "databases": "Bases de Datos",
+    "systems": "Sistemas",
+    "tools": "Herramientas"
+  },
+  "softSkills": {
+    "title": "Habilidades Blandas",
+    "skills": [
+      "Liderazgo técnico",
+      "Mentoría y formación de equipos",
+      "Comunicación efectiva con stakeholders",
+      "Pensamiento estratégico",
+      "Gestión de equipos distribuidos",
+      "Toma de decisiones basada en datos",
+      "Resolución de problemas complejos",
+      "Adaptabilidad al cambio",
+      "Trabajo colaborativo"
+    ]
+  },
+  "certifications": {
+    "title": "Certificaciones",
+    "viewCertificate": "Ver Certificado",
+    "categories": {
+      "microsoft": "Microsoft",
+      "aws": "AWS",
+      "google": "Google Cloud",
+      "linux": "Linux Foundation",
+      "github": "GitHub",
+      "gitlab": "GitLab",
+      "others": "Otros"
+    }
+  },
+  "recommendations": {
+    "title": "Recomendaciones"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "name": "Nombre",
+    "email": "Email",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "followMe": "Sígueme"
+  },
+  "common": {
+    "personalInfo": "Información Personal",
+    "sendMessage": "Enviar Mensaje",
+    "single": "Soltero",
+    "peruvian": "Peruana"
+  }
+}

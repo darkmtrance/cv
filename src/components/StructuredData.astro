@@ -1,0 +1,79 @@
+---
+// Structured Data (JSON-LD) for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michael Antonio Tomaylla Mendoza",
+  "jobTitle": "Software Architect",
+  "description": "Arquitecto de Software con más de 15 años de experiencia en desarrollo de sistemas empresariales, arquitectura cloud y mentoría técnica.",
+  "url": "https://matomaylla.com",
+  "image": "https://matomaylla.com/img/michael.jpg",
+  "email": "michael.tomaylla@pucp.edu.pe",
+  "telephone": "+51991214131",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lima",
+    "addressCountry": "PE"
+  },
+  "alumniOf": {
+    "@type": "Organization",
+    "name": "Pontificia Universidad Católica del Perú",
+    "url": "https://www.pucp.edu.pe/"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Indra Company",
+    "url": "https://www.indracompany.com/"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/mtm2019/",
+    "https://github.com/darkmtrance",
+    "https://www.credly.com/users/michael-tomaylla"
+  ],
+  "knowsAbout": [
+    "Software Architecture",
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "Cloud Computing",
+    "Azure",
+    "AWS",
+    "Google Cloud Platform",
+    "DevOps",
+    "Kubernetes",
+    "Docker",
+    "CI/CD",
+    "Technical Leadership",
+    "Software Development"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "credentialCategory": "certification"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "AWS Certified Solutions Architect – Associate",
+      "credentialCategory": "certification"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Associate Cloud Engineer Certification",
+      "credentialCategory": "certification"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CKA: Certified Kubernetes Administrator",
+      "credentialCategory": "certification"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CKAD: Certified Kubernetes Application Developer",
+      "credentialCategory": "certification"
+    }
+  ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

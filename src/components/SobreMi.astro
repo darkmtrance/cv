@@ -1,7 +1,39 @@
 ---
 import { generateImage } from 'astro-eleventy-img';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
+
+const translations = {
+  es: {
+    position: "Arquitecto de Software",
+    company: "Indra Company",
+    companyDesc: "Servicios y tecnologías de la información",
+    previous: "Previo:",
+    previousText: "Arquitecto de Información en Sapia",
+    education: "Educación:",
+    educationText: "PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ",
+    seeMore: "Ver Más"
+  },
+  en: {
+    position: "Software Architect",
+    company: "Indra Company",
+    companyDesc: "Information technology services",
+    previous: "Previous:",
+    previousText: "Information Architect at Sapia",
+    education: "Education:",
+    educationText: "PONTIFICAL CATHOLIC UNIVERSITY OF PERU",
+    seeMore: "See More"
+  }
+};
+
+const t = translations[lang];
+
 const michael = generateImage('src/images/michael.png', {
-  // The options here are passed directly to eleventy-img
   widths: [900],
   formats: ['webp', 'avif'],
 });
@@ -13,19 +45,19 @@ const michael = generateImage('src/images/michael.png', {
         </div>
         <div class="col-lg-6 col-xl-5">
             <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
-            <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">Arquitecto de Información</p>
+            <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">{t.position}</p>
             <span class="custom-about-me-infos">
-                <span class="custom-text-color-1 text-uppercase">Indra Company</span>
-                <span class="custom-text-color-1 text-uppercase mb-3">Servicios y tecnologías de la información</span>
+                <span class="custom-text-color-1 text-uppercase">{t.company}</span>
+                <span class="custom-text-color-1 text-uppercase mb-3">{t.companyDesc}</span>
                 <span class="custom-text-color-1 text-uppercase">
-                    <strong class="text-color-light">Previo: </strong>
-                    Arquitecto de Información en Sapia
-                    <a data-hash href="#experience" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
+                    <strong class="text-color-light">{t.previous} </strong>
+                    {t.previousText}
+                    <a data-hash href="#experience" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">{t.seeMore}</a>
                 </span>
                 <span class="custom-text-color-1 text-uppercase">
-                    <strong class="text-color-light">Educación: </strong>
-                    PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ
-                    <a data-hash href="#education" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">Ver Más</a>
+                    <strong class="text-color-light">{t.education} </strong>
+                    {t.educationText}
+                    <a data-hash href="#education" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">{t.seeMore}</a>
                 </span>
             </span>
         </div>

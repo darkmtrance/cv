@@ -3,8 +3,6 @@ export interface Props {
     certificacion: string;
 };
 
-import { generateImage } from 'astro-eleventy-img';
-
 // Obtener datos de certificaciones desde Credly
 const response = await fetch('https://www.credly.com/users/michael-tomaylla/badges.json');
 const data = await response.json();
@@ -35,20 +33,6 @@ function getBrand(name) {
     }
 }
 
-// Generar imágenes optimizadas
-const certificacionesConImagenes = await Promise.all(certifications.map(async certificado => {
-    try {
-        let valor = await generateImage(certificado.url, {
-            widths: [340],
-            formats: ['webp', 'avif'],
-        });
-        return { ...certificado, valor };
-    } catch (error) {
-        console.error(`Error al generar imagen para ${certificado.name}:`, error);
-        return certificado;
-    }
-}));
-
 const { certificacion } = Astro.props;
 
 ---
@@ -70,14 +54,14 @@ const { certificacion } = Astro.props;
                 </ul>
                 <div class="sort-destination-loader sort-destination-loader-showing">
                     <div class="row image-gallery sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
-                        {certificacionesConImagenes.map(certificado => (
+                        {certifications.map(certificado => (
                             <div class={`col-12 col-sm-6 col-lg-3 isotope-item ${certificado.brand}`}>
                                 <div class="image-gallery-item mb-4 pb-3">
-                                    <a href={certificado.valor?.webp?.[0]?.url || certificado.url} class="lightbox-portfolio">
+                                    <a href={certificado.url} class="lightbox-portfolio">
                                         <span class="thumb-info custom-thumb-info-1">
                                             <span class="thumb-info-wrapper">
                                                 <span class="thumb-info-plus"></span>
-                                                <img src={certificado.valor?.webp?.[0]?.url || certificado.url} class="img-fluid" alt={certificado.name} />
+                                                <img src={certificado.url} class="img-fluid" alt={certificado.name} loading="lazy" />
                                             </span>
                                             <span class="thumb-info-title">
                                                 <span class="thumb-info-type">{certificado.issued_at}</span>

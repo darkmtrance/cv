@@ -1,0 +1,150 @@
+---
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+    currentLang: Lang;
+    currentPath?: string;
+}
+
+const { currentLang, currentPath = '/' } = Astro.props;
+
+const languages = [
+    { code: 'es', name: 'ES', fullName: 'Español' },
+    { code: 'en', name: 'EN', fullName: 'English' }
+];
+
+// Generate URL for language switch
+function getLocalizedPath(lang: string, path: string): string {
+    if (lang === 'es') {
+        // Spanish is default, no prefix needed
+        return path.replace(/^\/en/, '') || '/';
+    }
+    // English needs /en prefix
+    return `/en${path.replace(/^\/en/, '')}`;
+}
+---
+
+<div class="language-selector">
+    <div class="dropdown">
+        <button 
+            class="btn btn-language dropdown-toggle" 
+            type="button" 
+            id="languageDropdown" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false"
+        >
+            <i class="fas fa-globe mr-2"></i>
+            <span class="current-lang">{languages.find(l => l.code === currentLang)?.name || 'ES'}</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+            {languages.map((lang) => (
+                <li>
+                    <a 
+                        class={`dropdown-item ${currentLang === lang.code ? 'active' : ''}`}
+                        href={getLocalizedPath(lang.code, currentPath)}
+                    >
+                        <span class="flag-icon">{lang.name}</span>
+                        <span class="lang-name">{lang.fullName}</span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</div>
+
+<style>
+    .language-selector {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .btn-language {
+        background: var(--color-bg-tertiary);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-md);
+        font-family: var(--font-body);
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .btn-language:hover {
+        background: var(--color-bg-secondary);
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+
+    .btn-language i {
+        opacity: 0.8;
+    }
+
+    .current-lang {
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+
+    .dropdown-menu {
+        background: var(--color-bg-tertiary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 0.5rem;
+        min-width: 160px;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .dropdown-item {
+        color: var(--color-text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(100, 181, 246, 0.1);
+        color: var(--color-text-primary);
+    }
+
+    .dropdown-item.active {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .dropdown-item.active:hover {
+        background: var(--color-primary-dark);
+    }
+
+    .flag-icon {
+        font-weight: 700;
+        font-size: 0.875rem;
+        width: 24px;
+    }
+
+    .lang-name {
+        font-size: 0.875rem;
+    }
+
+    @media (max-width: 767px) {
+        .language-selector {
+            top: 15px;
+            right: 15px;
+        }
+
+        .btn-language {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .lang-name {
+            display: none;
+        }
+    }
+</style>

@@ -11,6 +11,9 @@ import Experience from '../components/Experience.astro';
 import Correo from '../components/Correo.jsx';
 import PerfilProfesional from '../components/PerfilProfesional.jsx';
 import Portafolio from '../components/Portafolio.astro';
+import TechnicalSkills from '../components/TechnicalSkills.astro';
+import SoftSkills from '../components/SoftSkills.astro';
+import LanguageSelector from '../components/LanguageSelector.astro';
 import mixpanel from 'mixpanel-browser';
 
 import '../styles/bootstrap.min.css';
@@ -25,11 +28,14 @@ import '../styles/theme.css';
 import '../styles/theme-elements.css';
 import '../styles/demo-resume-dark.css';
 import '../styles/skin-resume-dark.css';
+import '../styles/design-system.css';
 
 const aboutme = "Perfil Profesional";
 const experience = "Experiencia";
 const education = "Educación";
 const skills = "Habilidades";
+const technicalSkills = "Habilidades Técnicas";
+const softSkills = "Habilidades Blandas";
 const certificacion = "Certificaciones";
 const recommendations = "Recomendaciones";
 const portafolio = "Portafolio";
@@ -56,7 +62,8 @@ mixpanel.track('Signed Up', {
 
 ---
 
-<Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Información">
+<Layout title="Michael Antonio Tomaylla Mendoza - Arquitecto de Software">
+    <LanguageSelector currentLang="es" currentPath="/" />
     <div class="body">
         <Header aboutme={aboutme} experience={experience} education={education} skills={skills} certificacion={certificacion} recommendations={recommendations} sayHello={sayHello} portafolio={portafolio} />
         <div role="main" class="main">
@@ -64,7 +71,7 @@ mixpanel.track('Signed Up', {
             <div id="about-me">
                 <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.webp[0].url}>
                     
-                    <SobreMi />
+                    <SobreMi lang="es" />
                     
                     <!--ul class="social-icons custom-social-icons">
                         <li class="social-icons-facebook">
@@ -105,7 +112,7 @@ mixpanel.track('Signed Up', {
                                 </a>
                             </div>
                             <div class="col-lg-3 text-center p-0">
-                                <a href="doc/CV-MichaelTomaylla2025.pdf" target="_blank" class="text-decoration-none">
+                                <a href="doc/CV-MichaelTomaylla2026.pdf" target="_blank" class="text-decoration-none">
                                     <span class="custom-nav-button text-color-light">
                                         <i class="icon-cloud-download icons text-color-primary"></i>
                                         Descargar CV
@@ -161,7 +168,7 @@ mixpanel.track('Signed Up', {
 
                                 <h2 class="text-color-light font-weight-extra-bold text-uppercase">{aboutme}</h2>
 
-                                <PerfilProfesional client:visible />
+                                <PerfilProfesional client:visible lang="es" />
 
                             </div>
                         </div>
@@ -169,8 +176,12 @@ mixpanel.track('Signed Up', {
                 </section>
             </div>
 
-            <Experience experience={experience} />
+            <Experience experience={experience} lang="es" />
             
+            <TechnicalSkills title={technicalSkills} lang="es" />
+
+            <SoftSkills title={softSkills} lang="es" />
+
             <Educacion education={education} />
 
             <section id="skills" class="section section-no-border bg-color-dark m-0">
@@ -245,7 +256,7 @@ mixpanel.track('Signed Up', {
 
             <Certificacion certificacion={certificacion} />
 
-            <Recomendacion recommendations={recommendations} />
+            <Recomendacion recommendations={recommendations} lang="es" />
 
             <Portafolio portafolio={portafolio} />
             

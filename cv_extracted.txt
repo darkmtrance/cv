@@ -1,0 +1,85 @@
+
+================================================================================
+PÁGINA 1
+================================================================================
+Michael Antonio Tomaylla Mendoza
+Lima, Peru • linkedin.com/in/mtm2019 • +51 991 214 131 • michael.tomaylla@pucp.edu.pe
+Más de 15 años de experiencia como Arquitecto de Software. Lideré el desarrollo de sistemas tributarios en Indra y
+SAPIA, logrando mejoras en calidad, rendimiento y mantenibilidad. Como mentor, brindo mentorías técnicas en
+tecnologías Java para equipos LATAM en Indra.
+EXPERIENCIA PROFESIONAL
+INDRA Company Lima, Perú / España
+Arquitecto de Información Octubre 2020 – Presente
+● Analizo, organizo tareas y desarrollo evolutivos de sistemas tributarios (ATC), mejorando
+rendimiento y mantenibilidad.
+● Implementé optimizaciones apoyadas en IA para mejorar procesos.
+● Mentoría técnica a +20 desarrolladores en equipos LATAM.
+● Impulso prácticas DevOps (CI/CD, observabilidad).
+● Coordiné entregas en entornos distribuidos logrando cumplimiento del 95% en hitos de
+proyecto.
+SAPIA Lima, Perú
+Arquitecto de Información Abril 2017 – septiembre 2020
+● Gestioné requisitos no funcionales mejorando disponibilidad del sistema a 99.9%.
+● Lideré PoCs cloud reduciendo costos de infraestructura en 20%.
+● Optimicé rendimiento de servicios críticos reduciendo incidencias productivas en 40%
+SUNAT Lima, Perú
+Analista de Sistemas Febrero 2010 – diciembre 2016
+● Participé en modernización de sistemas usados por +1000 usuarios internos.
+● Implementé mejoras que redujeron tiempos de procesamiento batch en 25%.
+● Contribuí a proyectos nacionales de alto impacto tributario.
+EDUCACIÓN
+Pontificia Universidad Católica del Perú Lima, Perú
+Ingeniero Informático (Titulado) 2014
+
+================================================================================
+PÁGINA 2
+================================================================================
+CERTIFICACIONES
+● Microsoft Certified: Azure Administrator Associate
+● AWS Certified Solutions Architect – Associate
+● Google Associate Cloud Engineer Certification
+● Microsoft Certified: Experto en Ingeniería DevOps
+● Microsoft Certified: Azure Developer Associate
+● Google Generative AI Leader Certification
+● Microsoft Certified: Azure AI Fundamentals
+● KCNA: Kubernetes and Cloud Native Associate
+● CKAD: Certified Kubernetes Application Developer
+● CKA: Certified Kubernetes Administrator
+● Microsoft Certified: Azure Data Fundamentals
+● Microsoft Certified: Power Platform Fundamentals
+● GitHub Foundations
+● GitLab Certified Associate
+● Professional Scrum Master I (PSM I)
+HABILIDADES TÉCNICAS
+● Lenguajes:
+Java, SQL
+● Frameworks y Librerías:
+Spring Boot, Spring Framework, Quarkus, Hibernate, JPA, Junit
+● Arquitectura:
+Microservicios, Arquitectura Hexagonal, RESTful APIs, Clean Architecture
+● DevOps:
+Docker, Kubernetes, CI/CD, GitLab CI, GitHub Actions
+● Cloud:
+Azure, AWS, Google Cloud Platform (GCP)
+● Infraestructura como Código:
+Terraform
+● Bases de Datos:
+PostgreSQL, MySQL, Oracle
+● Sistemas Operativos:
+Linux
+● Herramientas:
+Maven, Gradle, Git, SonarQube
+
+================================================================================
+PÁGINA 3
+================================================================================
+HABILIDADES BLANDAS
+● Liderazgo técnico
+● Mentoría y formación de equipos
+● Comunicación efectiva con stakeholders
+● Pensamiento estratégico
+● Gestión de equipos distribuidos
+● Toma de decisiones basada en datos
+● Resolución de problemas complejos
+● Adaptabilidad al cambio
+● Trabajo colaborativo
