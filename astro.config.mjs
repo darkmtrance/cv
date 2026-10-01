@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://cv.matomaylla.com',
   integrations: [
     react(),
-    sitemap()
+    sitemap({ filter: (page) => !page.includes('/cv/print') })
   ],
   i18n: {
     defaultLocale: 'es',

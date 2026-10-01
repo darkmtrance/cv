@@ -1,0 +1,436 @@
+---
+// Printable A4 CV rendered from the same data as the site.
+// `npm run cv:pdf` prints this page to public/doc/. Not linked, not indexed.
+import {
+  certGroups,
+  formatMonth,
+  jobs,
+  levelLabel,
+  person,
+  publications,
+  softSkills,
+  specialties,
+  stack,
+  yearsOfExperience,
+  type StackItem,
+} from '../../data/cv';
+
+const lang = 'es';
+const years = yearsOfExperience();
+const itemName = ({ name }: StackItem) => (Array.isArray(name) ? name[0] : name);
+const range = (start: string, end: string | null) => `${formatMonth(start, lang)} – ${formatMonth(end, lang)}`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{person.name} – CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    />
+    <style is:global>
+      @page {
+        size: A4;
+        margin: 14mm 15mm 14mm;
+      }
+
+      :root {
+        --ink: #0e1b2c;
+        --muted: #4e5d70;
+        --line: #c5ced8;
+        --accent: #1f4fd1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 400 9.6pt/1.45 'Barlow', sans-serif;
+      }
+
+      .page {
+        max-width: 180mm;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      p,
+      ul,
+      dl,
+      dd {
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      strong {
+        font-weight: 600;
+      }
+
+      /* Header */
+      .name {
+        font-size: 30pt;
+        letter-spacing: -0.01em;
+        line-height: 0.95;
+      }
+
+      .role {
+        margin-top: 4pt;
+        font: 500 13pt/1.2 'Barlow Condensed', sans-serif;
+        color: var(--accent);
+      }
+
+      .title-block {
+        display: grid;
+        grid-template-columns: 0.8fr 1fr 1.45fr 1.15fr;
+        margin-top: 10pt;
+        border: 1pt solid var(--ink);
+      }
+
+      .title-block div {
+        padding: 4pt 7pt 5pt;
+        border-left: 0.6pt solid var(--line);
+      }
+
+      .title-block div:first-child {
+        border-left: 0;
+      }
+
+      .title-block dt {
+        font-size: 7.4pt;
+        color: var(--muted);
+      }
+
+      .title-block dd {
+        font-weight: 500;
+        font-size: 8.8pt;
+      }
+
+      .links {
+        margin-top: 5pt;
+        font-size: 8.6pt;
+        color: var(--muted);
+      }
+
+      .links a {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .summary {
+        margin-top: 10pt;
+        font-size: 10pt;
+        line-height: 1.5;
+      }
+
+      /* Sections */
+      section {
+        margin-top: 13pt;
+      }
+
+      h2 {
+        font-size: 14pt;
+        padding-bottom: 3pt;
+        margin-bottom: 7pt;
+        border-bottom: 1pt solid var(--ink);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3pt 14pt;
+        list-style: none;
+        font-weight: 500;
+      }
+
+      /* Experience */
+      .job {
+        break-inside: avoid-page;
+      }
+
+      .job + .job {
+        margin-top: 10pt;
+      }
+
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
+      }
+
+      .job-head h3 {
+        font-size: 12pt;
+      }
+
+      .job-head h3 span {
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .dates {
+        flex: none;
+        font-size: 8.8pt;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .place {
+        font-size: 8.6pt;
+        color: var(--muted);
+      }
+
+      .project {
+        margin-top: 5pt;
+        break-inside: avoid-page;
+      }
+
+      .project-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
+        font-weight: 600;
+      }
+
+      .points {
+        margin-top: 3pt;
+        padding-left: 11pt;
+      }
+
+      .points li {
+        padding-left: 2pt;
+      }
+
+      .points li + li {
+        margin-top: 1.5pt;
+      }
+
+      .points li::marker {
+        color: var(--muted);
+      }
+
+      .points strong {
+        background: linear-gradient(transparent 62%, rgb(31 79 209 / 0.14) 62%);
+      }
+
+      /* Two-column blocks */
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 18pt;
+      }
+
+      .cols section {
+        break-inside: avoid-page;
+      }
+
+      .stack div,
+      .certs div {
+        display: grid;
+        grid-template-columns: 34mm 1fr;
+        gap: 8pt;
+        padding: 3pt 0;
+        border-top: 0.6pt solid var(--line);
+        break-inside: avoid;
+      }
+
+      .stack div:first-child,
+      .certs div:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .stack dt,
+      .certs dt {
+        color: var(--muted);
+      }
+
+      .level {
+        color: var(--muted);
+      }
+
+      .plain {
+        list-style: none;
+      }
+
+      .plain li + li {
+        margin-top: 1.5pt;
+      }
+
+      .posts {
+        list-style: none;
+      }
+
+      .posts li + li {
+        margin-top: 3pt;
+      }
+
+      .posts a {
+        font-weight: 600;
+      }
+
+      .posts span {
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1 class="name">{person.name}</h1>
+        <p class="role">Arquitecto de Software, cloud y microservicios</p>
+        <dl class="title-block">
+          <div><dt>Ubicación</dt><dd>Lima, Perú</dd></div>
+          <div><dt>Teléfono</dt><dd><a href={person.phoneHref}>{person.phone}</a></dd></div>
+          <div><dt>Correo</dt><dd><a href={`mailto:${person.email}`}>{person.email}</a></dd></div>
+          <div><dt>Idiomas</dt><dd>Español nativo, inglés B2/C1</dd></div>
+        </dl>
+        <p class="links">
+          <a href={person.linkedin}>linkedin.com/in/mtm2019</a>
+          {'  |  '}
+          <a href={person.github}>github.com/darkmtrance</a>
+          {'  |  '}
+          <a href={person.blog}>matomaylla.com</a> (blog técnico)
+          {'  |  '}
+          <a href="https://cv.matomaylla.com">cv.matomaylla.com</a>
+        </p>
+        <p class="summary">
+          Arquitecto de Software con <strong>más de {years - 1} años de experiencia</strong> diseñando y liderando plataformas
+          empresariales críticas, especializado en <strong>Java, arquitecturas cloud-native, microservicios y modernización de
+          sistemas tributarios</strong>. Mentor técnico de equipos distribuidos en LATAM, con foco en DevOps, automatización CI/CD
+          y adopción de IA generativa (GitHub Copilot, Spring AI) en el ciclo de desarrollo. Autor de un blog técnico activo sobre
+          arquitectura, Spring Cloud y agentes de IA.
+        </p>
+      </header>
+
+      <section>
+        <h2>Áreas de especialización</h2>
+        <ul class="tags">
+          {specialties[lang].map((area) => <li>{area}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Experiencia profesional</h2>
+        {jobs.map((job) => (
+          <article class="job">
+            <div class="job-head">
+              <h3>
+                {job.role[lang]} <span>en {job.company === 'Indra' ? 'Indra Company' : job.company}</span>
+              </h3>
+              <span class="dates">{range(job.start, job.end)}</span>
+            </div>
+            <p class="place">{job.id === 'indra' ? 'Lima, Perú y España' : 'Lima, Perú'}</p>
+            {job.highlights && (
+              <ul class="points">
+                {job.highlights[lang].map((point) => <li set:html={point} />)}
+              </ul>
+            )}
+            {job.projects &&
+              [...job.projects].reverse().map((project) => (
+                <div class="project">
+                  <div class="project-head">
+                    <span>{project.name[lang]}</span>
+                    <span class="dates">{range(project.start, project.end)}</span>
+                  </div>
+                  <ul class="points">
+                    {project.highlights[lang].map((point) => <li set:html={point} />)}
+                  </ul>
+                </div>
+              ))}
+          </article>
+        ))}
+      </section>
+
+      <div class="cols">
+        <section>
+          <h2>Educación</h2>
+          <p><strong>Pontificia Universidad Católica del Perú</strong></p>
+          <p>Ingeniero Informático (titulado), 2014</p>
+        </section>
+        <section>
+          <h2>Liderazgo</h2>
+          <ul class="plain">
+            {softSkills[lang].map((skill) => <li>{skill}</li>)}
+          </ul>
+        </section>
+      </div>
+
+      <section>
+        <h2>Arquitectura y tecnologías</h2>
+        <dl class="stack">
+          {stack.map((group) => (
+            <div>
+              <dt>{group.label[lang]}</dt>
+              <dd>
+                {group.items.map((item, i) => (
+                  <>
+                    {itemName(item)}
+                    {item.level && <span class="level"> ({levelLabel[lang][item.level]})</span>}
+                    {i < group.items.length - 1 && ', '}
+                  </>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <h2>Certificaciones</h2>
+        <dl class="certs">
+          {certGroups.map((group) => (
+            <div>
+              <dt>{group.label[lang]}</dt>
+              <dd>{group.items.join(', ')}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="links">Verificables en <a href={person.credly}>credly.com/users/michael-tomaylla</a></p>
+      </section>
+
+      <section>
+        <h2>Publicaciones técnicas recientes</h2>
+        <ul class="posts">
+          {publications.map((post) => (
+            <li>
+              <a href={post.url}>{post.title}</a>
+              <span>, {post.topics[lang]} ({formatMonth(post.date, lang)})</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

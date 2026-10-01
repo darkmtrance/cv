@@ -274,6 +274,38 @@ export const featuredCerts = [
   'KCNA: Kubernetes and Cloud Native Associate',
 ];
 
+/** Curated, grouped certification list for the printable CV. */
+export const certGroups: { label: Record<Lang, string>; items: string[] }[] = [
+  {
+    label: { es: 'Arquitectura cloud', en: 'Cloud architecture' },
+    items: ['AWS Certified Solutions Architect – Associate', 'Azure Administrator Associate', 'Azure Developer Associate', 'Google Associate Cloud Engineer'],
+  },
+  {
+    label: { es: 'DevOps y Kubernetes', en: 'DevOps and Kubernetes' },
+    items: ['Azure DevOps Engineer Expert', 'CKA – Certified Kubernetes Administrator', 'CKAD – Certified Kubernetes Application Developer', 'KCNA – Kubernetes and Cloud Native Associate'],
+  },
+  {
+    label: { es: 'IA', en: 'AI' },
+    items: ['Azure AI Apps and Agents Developer Associate', 'Google Generative AI Leader', 'Azure AI Fundamentals'],
+  },
+  {
+    label: { es: 'Seguridad y datos', en: 'Security and data' },
+    items: ['Security, Compliance and Identity Fundamentals', 'Azure Data Fundamentals'],
+  },
+  {
+    label: { es: 'Ágil y fundamentos', en: 'Agile and foundations' },
+    items: [
+      'Professional Scrum Master I (PSM I)',
+      'Scrum Foundation Professional Certification',
+      'Enterprise Design Thinking Practitioner',
+      'GitHub Foundations',
+      'GitLab Certified Git Associate',
+      'Power Platform Fundamentals',
+      'Build Infrastructure with Terraform on Google Cloud',
+    ],
+  },
+];
+
 /** Certifications earned outside Credly (Microsoft Learn), listed with the rest. */
 export const extraCerts = [
   { name: 'Microsoft Certified: Azure Administrator Associate', issuer: 'Microsoft' },
