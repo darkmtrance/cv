@@ -1,0 +1,125 @@
+---
+import { getImage } from 'astro:assets';
+import portraitSrc from '../../images/michael.png';
+import Icon from './Icon.astro';
+import { ui } from '../../data/ui';
+import {
+  careerStart,
+  formatDurationShort,
+  jobs,
+  person,
+  toMonthIndex,
+  yearsOfExperience,
+} from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const portrait = await getImage({ src: portraitSrc, width: 680, format: 'webp' });
+
+// Timeline scale: from January of the first career year to the current month
+const now = new Date();
+const scaleStart = toMonthIndex(`${careerStart.slice(0, 4)}-01`);
+const scaleEnd = toMonthIndex(null) + 1;
+const pct = (month: number) => ((month - scaleStart) / (scaleEnd - scaleStart)) * 100;
+
+const segments = [...jobs]
+  .sort((a, b) => toMonthIndex(a.start) - toMonthIndex(b.start))
+  .map((job, i) => {
+    const start = toMonthIndex(job.start);
+    const end = toMonthIndex(job.end) + 1;
+    return {
+      job,
+      i,
+      left: pct(start),
+      width: pct(end) - pct(start),
+      length: formatDurationShort(job.start, job.end, lang),
+    };
+  });
+
+const firstYear = Number(careerStart.slice(0, 4));
+const years = Array.from({ length: now.getFullYear() - firstYear + 1 }, (_, i) => firstYear + i);
+---
+
+<header class="hero sheet" id="top">
+  <div class="hero-main">
+    <h1 class="hero-name">
+      <span>Michael</span>
+      <span>Tomaylla</span>
+    </h1>
+    <p class="hero-role">{t.role}</p>
+    <p class="hero-pitch">{t.pitch(yearsOfExperience())}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={person.cv} download>
+        <Icon name="download" />
+        {t.downloadCv}
+      </a>
+      <a class="btn btn-ghost" href="#contact">{t.writeMe}</a>
+      <span class="icon-links">
+        <a class="icon-link" href={person.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+          <Icon name="linkedin" />
+        </a>
+        <a class="icon-link" href={person.github} target="_blank" rel="noopener" aria-label="GitHub">
+          <Icon name="github" />
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <figure class="portrait">
+    <img src={portrait.src} width="340" height="425" alt={person.shortName} fetchpriority="high" />
+  </figure>
+
+  <div class="hero-timeline">
+    <p class="timeline-caption">{t.timelineLabel}</p>
+    <ol class="dims">
+      {segments.map(({ job, i, left, width, length }) => (
+        <li
+          class:list={['dim', { 'dim-current': job.end === null }]}
+          style={`--start:${left}%; --span:${width}%; --i:${i}`}
+        >
+          <a href={`#job-${job.id}`}>
+            <span class="dim-name">{job.company}</span>
+            <span class="dim-line" aria-hidden="true"></span>
+            <span class="dim-len">{length}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <ol class="axis" aria-hidden="true">
+      {years.map((year) => (
+        <li class:list={{ minor: year % 2 === 1 }} style={`--at:${pct(year * 12)}%`}>
+          <span>{year}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <dl class="title-block">
+    <div>
+      <dt>{t.titleBlock.location}</dt>
+      <dd>{t.titleBlock.locationValue}</dd>
+    </div>
+    <div>
+      <dt>{t.titleBlock.email}</dt>
+      <dd><a href={`mailto:${person.email}`}>{person.email}</a></dd>
+    </div>
+    <div>
+      <dt>{t.titleBlock.phone}</dt>
+      <dd><a href={person.phoneHref}>{person.phone}</a></dd>
+    </div>
+    <div>
+      <dt>{t.titleBlock.languages}</dt>
+      <dd>{t.titleBlock.languagesValue}</dd>
+    </div>
+    <div>
+      <dt>{t.titleBlock.education}</dt>
+      <dd>{t.titleBlock.educationValue}</dd>
+    </div>
+  </dl>
+</header>

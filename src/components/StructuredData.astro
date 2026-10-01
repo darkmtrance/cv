@@ -1,5 +1,11 @@
 ---
 // Structured Data (JSON-LD) for SEO
+export interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -7,7 +13,7 @@ const structuredData = {
   "jobTitle": "Software Architect",
   "description": "Arquitecto de Software con más de 15 años de experiencia en desarrollo de sistemas empresariales, arquitectura cloud y mentoría técnica.",
   "url": "https://matomaylla.com",
-  "image": "https://matomaylla.com/img/michael.jpg",
+  "image": image,
   "email": "michael.tomaylla@pucp.edu.pe",
   "telephone": "+51991214131",
   "address": {

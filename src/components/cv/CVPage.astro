@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Topbar from './Topbar.astro';
+import Hero from './Hero.astro';
+import Experience from './Experience.astro';
+import Skills from './Skills.astro';
+import Certifications from './Certifications.astro';
+import Testimonials from './Testimonials.astro';
+import Contact from './Contact.astro';
+import { ui } from '../../data/ui';
+import { person } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Layout title={t.metaTitle} description={t.metaDescription} lang={lang}>
+  <Topbar lang={lang} />
+  <main id="main">
+    <Hero lang={lang} />
+    <Experience lang={lang} />
+    <Skills lang={lang} />
+    <Certifications lang={lang} />
+    <Testimonials lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  <footer class="site-footer sheet">
+    <span>© {new Date().getFullYear()} {person.name}</span>
+    <span>{t.footer}</span>
+  </footer>
+</Layout>
