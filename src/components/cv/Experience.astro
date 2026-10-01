@@ -28,9 +28,24 @@ const t = ui[lang];
       <div>
         <h3 class="job-company">{job.company}</h3>
         <p class="job-role">{job.role[lang]}</p>
-        <ul class="job-points">
-          {job.highlights[lang].map((point) => <li set:html={point} />)}
-        </ul>
+        {job.highlights && (
+          <ul class="job-points">
+            {job.highlights[lang].map((point) => <li set:html={point} />)}
+          </ul>
+        )}
+        {job.projects?.map((project) => (
+          <div class="project">
+            <h4 class="project-name">
+              {project.name[lang]}
+              <span class="project-dates">
+                {formatMonth(project.start, lang)} – {formatMonth(project.end, lang)}
+              </span>
+            </h4>
+            <ul class="job-points">
+              {project.highlights[lang].map((point) => <li set:html={point} />)}
+            </ul>
+          </div>
+        ))}
       </div>
     </article>
   ))}

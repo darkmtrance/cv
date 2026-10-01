@@ -1,6 +1,6 @@
 ---
 import { ui } from '../../data/ui';
-import { featuredCerts, person } from '../../data/cv';
+import { extraCerts, featuredCerts, person } from '../../data/cv';
 import type { Lang } from '../../i18n/utils';
 
 export interface Props {
@@ -52,6 +52,7 @@ const featured = featuredCerts
   .map((prefix) => badges.find((b) => b.name.startsWith(prefix)))
   .filter((b): b is Badge => Boolean(b));
 const rest = badges.filter((b) => !featured.includes(b));
+const total = badges.length + extraCerts.length;
 ---
 
 <section class="section sheet" id="certifications" aria-labelledby="certs-title">
@@ -60,7 +61,7 @@ const rest = badges.filter((b) => !featured.includes(b));
     <p><a href={person.credly} target="_blank" rel="noopener">{t.verify}</a></p>
   ) : (
     <>
-      <p class="certs-intro">{t.certsIntro(badges.length)}</p>
+      <p class="certs-intro">{t.certsIntro(total)}</p>
       <ul class="cert-grid">
         {featured.map((b) => (
           <li>
@@ -72,10 +73,16 @@ const rest = badges.filter((b) => !featured.includes(b));
           </li>
         ))}
       </ul>
-      {rest.length > 0 && (
+      {rest.length + extraCerts.length > 0 && (
         <details class="cert-more">
-          <summary>{t.certsAll(rest.length)}</summary>
+          <summary>{t.certsAll(rest.length + extraCerts.length)}</summary>
           <ul class="cert-list">
+            {extraCerts.map((c) => (
+              <li>
+                {c.name}
+                <span>{c.issuer}</span>
+              </li>
+            ))}
             {rest.map((b) => (
               <li>
                 <a href={b.url} target="_blank" rel="noopener">{b.name}</a>

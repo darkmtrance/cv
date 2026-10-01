@@ -118,8 +118,8 @@ const years = Array.from({ length: now.getFullYear() - firstYear + 1 }, (_, i) =
       <dd>{t.titleBlock.languagesValue}</dd>
     </div>
     <div>
-      <dt>{t.titleBlock.education}</dt>
-      <dd>{t.titleBlock.educationValue}</dd>
+      <dt>{t.titleBlock.blog}</dt>
+      <dd><a href={person.blog} target="_blank" rel="noopener">{person.blogLabel}</a></dd>
     </div>
   </dl>
 </header>

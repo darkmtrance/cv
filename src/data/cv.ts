@@ -1,5 +1,12 @@
 import type { Lang } from '../i18n/utils';
 
+export interface Project {
+  name: Record<Lang, string>;
+  start: string;
+  end: string | null;
+  highlights: Record<Lang, string[]>;
+}
+
 export interface Job {
   id: string;
   company: string;
@@ -9,7 +16,9 @@ export interface Job {
   start: string;
   end: string | null;
   /** HTML allowed: wrap measurable results in <strong>. */
-  highlights: Record<Lang, string[]>;
+  highlights?: Record<Lang, string[]>;
+  /** Engagements within the same job, newest first. */
+  projects?: Project[];
 }
 
 export const person = {
@@ -21,6 +30,8 @@ export const person = {
   linkedin: 'https://www.linkedin.com/in/mtm2019/',
   github: 'https://github.com/darkmtrance',
   credly: 'https://www.credly.com/users/michael-tomaylla',
+  blog: 'https://matomaylla.com',
+  blogLabel: 'matomaylla.com',
   cv: '/doc/CV-MichaelTomaylla2026.pdf',
 };
 
@@ -34,22 +45,44 @@ export const jobs: Job[] = [
     role: { es: 'Arquitecto de Información', en: 'Information Architect' },
     start: '2020-10',
     end: null,
-    highlights: {
-      es: [
-        'Analizo, planifico y desarrollo evolutivos de sistemas tributarios (ATC), mejorando su rendimiento y mantenibilidad.',
-        'Implementé optimizaciones apoyadas en IA para mejorar procesos.',
-        'Doy mentoría técnica a <strong>más de 20 desarrolladores</strong> en equipos LATAM.',
-        'Impulso prácticas DevOps: CI/CD y observabilidad.',
-        'Coordiné entregas en equipos distribuidos con un <strong>95% de hitos cumplidos</strong>.',
-      ],
-      en: [
-        'I analyze, plan and build enhancements to tax systems (ATC), improving performance and maintainability.',
-        'Implemented AI-assisted optimizations to improve processes.',
-        'Mentor <strong>more than 20 developers</strong> across LATAM teams.',
-        'Drive DevOps practices: CI/CD and observability.',
-        'Coordinated deliveries across distributed teams, meeting <strong>95% of project milestones</strong>.',
-      ],
-    },
+    projects: [
+      {
+        name: { es: 'Proyecto tributario de Canarias', en: 'Canary Islands tax platform' },
+        start: '2026-04',
+        end: null,
+        highlights: {
+          es: [
+            'Reasignado tras estabilizar el ATC para asumir nuevos retos de evolutivo y modernización en Java.',
+            'Diseñé y desarrollé un CLI que consulta JIRA y el repositorio de código desde la terminal, agilizando las consultas habituales del equipo.',
+          ],
+          en: [
+            'Reassigned after stabilizing ATC to take on new enhancement and modernization work in Java.',
+            "Designed and built a CLI that queries JIRA and the code repository from the terminal, speeding up the team's everyday lookups.",
+          ],
+        },
+      },
+      {
+        name: { es: 'Agència Tributària de Catalunya (ATC)', en: 'Catalan Tax Agency (ATC)' },
+        start: '2020-10',
+        end: '2026-03',
+        highlights: {
+          es: [
+            'Analicé, diseñé y desarrollé evolutivos en Java de la plataforma tributaria catalana, que gestiona <strong>2.28 millones de contribuyentes</strong> y <strong>4.3 millones de declaraciones</strong> al año.',
+            'Apliqué IA generativa (GitHub Copilot) para optimizar procesos y reducir los tiempos de análisis y desarrollo.',
+            'Mentor técnico de <strong>más de 20 desarrolladores</strong> en equipos LATAM, promoviendo buenas prácticas de arquitectura, Clean Code y DDD.',
+            'Impulsé DevOps y CI/CD con GitLab CI y GitHub Actions, con control de calidad en SonarQube.',
+            'Coordiné entregas en equipos distribuidos con un <strong>95% de hitos cumplidos</strong>.',
+          ],
+          en: [
+            'Analyzed, designed and built Java enhancements for the Catalan tax platform, which serves <strong>2.28 million taxpayers</strong> and <strong>4.3 million returns</strong> a year.',
+            'Applied generative AI (GitHub Copilot) to streamline processes and cut analysis and development time.',
+            'Mentored <strong>more than 20 developers</strong> across LATAM teams in architecture best practices, Clean Code and DDD.',
+            'Drove DevOps and CI/CD with GitLab CI and GitHub Actions, with quality gates in SonarQube.',
+            'Coordinated deliveries across distributed teams, meeting <strong>95% of project milestones</strong>.',
+          ],
+        },
+      },
+    ],
   },
   {
     id: 'sapia',
@@ -60,14 +93,14 @@ export const jobs: Job[] = [
     end: '2020-09',
     highlights: {
       es: [
-        'Gestioné los requisitos no funcionales y llevé la <strong>disponibilidad del sistema a 99.9%</strong>.',
-        'Lideré pruebas de concepto en cloud que <strong>redujeron 20% los costos</strong> de infraestructura.',
-        'Optimicé servicios críticos y <strong>reduje 40% las incidencias</strong> en producción.',
+        'Definí y gestioné los requisitos no funcionales de una arquitectura de microservicios y contenedores (Docker, Kubernetes), alcanzando <strong>99.9% de disponibilidad</strong>.',
+        'Lideré pruebas de concepto en cloud (Azure y AWS) con Terraform que <strong>redujeron 20% los costos</strong> de infraestructura.',
+        'Optimicé servicios críticos en Java y <strong>reduje 40% las incidencias</strong> en producción.',
       ],
       en: [
-        'Owned non-functional requirements and raised <strong>system availability to 99.9%</strong>.',
-        'Led cloud proofs of concept that <strong>cut infrastructure costs by 20%</strong>.',
-        'Optimized critical services, <strong>reducing production incidents by 40%</strong>.',
+        'Defined and owned non-functional requirements for a microservices and container architecture (Docker, Kubernetes), reaching <strong>99.9% availability</strong>.',
+        'Led cloud proofs of concept (Azure and AWS) with Terraform that <strong>cut infrastructure costs by 20%</strong>.',
+        'Optimized critical Java services, <strong>reducing production incidents by 40%</strong>.',
       ],
     },
   },
@@ -80,50 +113,135 @@ export const jobs: Job[] = [
     end: '2016-12',
     highlights: {
       es: [
-        'Participé en la modernización de sistemas usados por <strong>más de 1,000 usuarios</strong> internos.',
+        'Contribuí a modernizar plataformas tributarias en Java usadas por <strong>más de 1,000 usuarios</strong> internos.',
         'Implementé mejoras que <strong>redujeron 25% el tiempo</strong> de los procesos batch.',
-        'Contribuí a proyectos nacionales de alto impacto tributario.',
+        'Participé en proyectos de alto impacto nacional en el ecosistema tributario peruano.',
       ],
       en: [
-        'Helped modernize systems used by <strong>more than 1,000 internal users</strong>.',
+        'Helped modernize Java tax platforms used by <strong>more than 1,000 internal users</strong>.',
         'Shipped improvements that <strong>cut batch processing time by 25%</strong>.',
-        'Contributed to national projects with high tax impact.',
+        "Worked on high-impact national projects across Peru's tax ecosystem.",
       ],
     },
   },
 ];
 
-export const stack: { label: Record<Lang, string>; items: string[] }[] = [
-  { label: { es: 'Lenguajes', en: 'Languages' }, items: ['Java', 'SQL'] },
-  { label: { es: 'Frameworks', en: 'Frameworks' }, items: ['Spring Boot', 'Spring Framework', 'Quarkus', 'Hibernate', 'JPA', 'JUnit'] },
-  { label: { es: 'Arquitectura', en: 'Architecture' }, items: ['Microservicios|Microservices', 'Arquitectura hexagonal|Hexagonal architecture', 'APIs REST|REST APIs', 'Clean Architecture'] },
-  { label: { es: 'DevOps', en: 'DevOps' }, items: ['Docker', 'Kubernetes', 'CI/CD', 'GitLab CI', 'GitHub Actions'] },
-  { label: { es: 'Cloud', en: 'Cloud' }, items: ['Azure', 'AWS', 'Google Cloud'] },
-  { label: { es: 'Infraestructura como código', en: 'Infrastructure as code' }, items: ['Terraform'] },
-  { label: { es: 'Bases de datos', en: 'Databases' }, items: ['PostgreSQL', 'MySQL', 'Oracle'] },
-  { label: { es: 'Herramientas', en: 'Tooling' }, items: ['Linux', 'Maven', 'Gradle', 'Git', 'SonarQube'] },
+type Level = 'expert' | 'advanced';
+
+export const levelLabel: Record<Lang, Record<Level, string>> = {
+  es: { expert: 'experto', advanced: 'avanzado' },
+  en: { expert: 'expert', advanced: 'advanced' },
+};
+
+/** A stack item: its name (or an [es, en] pair) and an optional level. */
+export interface StackItem {
+  name: string | [string, string];
+  level?: Level;
+}
+
+const item = (name: StackItem['name'], level?: Level): StackItem => ({ name, level });
+
+export const stack: { label: Record<Lang, string>; items: StackItem[] }[] = [
+  { label: { es: 'Lenguajes', en: 'Languages' }, items: [item('Java', 'expert'), item('SQL', 'advanced')] },
+  {
+    label: { es: 'Frameworks', en: 'Frameworks' },
+    items: [item('Spring Boot', 'expert'), item('Spring Framework'), item('Quarkus'), item('Hibernate'), item('JPA'), item('JUnit')],
+  },
+  {
+    label: { es: 'Arquitectura', en: 'Architecture' },
+    items: [
+      item(['Microservicios', 'Microservices'], 'expert'),
+      item(['Arquitectura hexagonal', 'Hexagonal architecture']),
+      item(['APIs REST', 'REST APIs']),
+      item('Clean Architecture'),
+      item('DDD'),
+    ],
+  },
+  {
+    label: { es: 'DevOps', en: 'DevOps' },
+    items: [item('Docker', 'expert'), item('Kubernetes', 'advanced'), item('CI/CD'), item('GitLab CI'), item('GitHub Actions'), item('SonarQube')],
+  },
+  { label: { es: 'Cloud', en: 'Cloud' }, items: [item('Azure', 'advanced'), item('AWS', 'advanced'), item('Google Cloud')] },
+  { label: { es: 'Infraestructura como código', en: 'Infrastructure as code' }, items: [item('Terraform')] },
+  {
+    label: { es: 'IA aplicada al desarrollo', en: 'AI for development' },
+    items: [item('GitHub Copilot'), item('Spring AI'), item(['IA generativa', 'Generative AI'])],
+  },
+  { label: { es: 'Bases de datos', en: 'Databases' }, items: [item('PostgreSQL'), item('MySQL'), item('Oracle'), item('MongoDB')] },
+  { label: { es: 'Herramientas', en: 'Tooling' }, items: [item('Linux'), item('Maven'), item('Gradle'), item('Git'), item('Jira')] },
 ];
+
+export const specialties: Record<Lang, string[]> = {
+  es: [
+    'Arquitectura de software empresarial',
+    'Microservicios y arquitectura hexagonal',
+    'Cloud en Azure, AWS y Google Cloud',
+    'DevOps y CI/CD',
+    'Kubernetes y contenedores',
+    'IA generativa aplicada al desarrollo',
+    'Mentoría y liderazgo técnico',
+  ],
+  en: [
+    'Enterprise software architecture',
+    'Microservices and hexagonal architecture',
+    'Cloud on Azure, AWS and Google Cloud',
+    'DevOps and CI/CD',
+    'Kubernetes and containers',
+    'Generative AI applied to development',
+    'Mentoring and technical leadership',
+  ],
+};
 
 export const softSkills: Record<Lang, string[]> = {
   es: [
-    'Liderazgo técnico',
-    'Mentoría y formación de equipos',
-    'Comunicación con stakeholders',
-    'Pensamiento estratégico',
+    'Liderazgo técnico de equipos de desarrollo',
+    'Mentoría de ingenieros y arquitectos junior',
+    'Comunicación con stakeholders técnicos y de negocio',
     'Gestión de equipos distribuidos',
     'Decisiones basadas en datos',
-    'Resolución de problemas complejos',
   ],
   en: [
-    'Technical leadership',
-    'Mentoring and team building',
-    'Stakeholder communication',
-    'Strategic thinking',
+    'Technical leadership of development teams',
+    'Mentoring junior engineers and architects',
+    'Communicating with technical and business stakeholders',
     'Leading distributed teams',
     'Data-driven decisions',
-    'Complex problem solving',
   ],
 };
+
+/** Latest posts from the blog, newest first. */
+export const publications: { title: string; url: string; date: string; topics: Record<Lang, string> }[] = [
+  {
+    title: 'La IA construye. Tú pones los planos',
+    url: 'https://matomaylla.com/publicaciones/openspec-vs-speckit/',
+    date: '2026-09',
+    topics: { es: 'Spec-Driven Development, OpenSpec y Spec Kit', en: 'Spec-driven development, OpenSpec and Spec Kit' },
+  },
+  {
+    title: 'Aether: el arnés que convierte un LLM en un agente confiable',
+    url: 'https://matomaylla.com/publicaciones/aether/',
+    date: '2026-07',
+    topics: { es: 'Java, Spring AI y agentes de IA', en: 'Java, Spring AI and AI agents' },
+  },
+  {
+    title: 'Construyendo con Confianza — API First',
+    url: 'https://matomaylla.com/publicaciones/api-first/',
+    date: '2026-03',
+    topics: { es: 'Arquitectura de APIs y OpenAPI', en: 'API architecture and OpenAPI' },
+  },
+  {
+    title: 'De Código Local a ACR Rápido',
+    url: 'https://matomaylla.com/publicaciones/quarkus-acr-cicd/',
+    date: '2026-03',
+    topics: { es: 'Quarkus, Docker, GitHub Actions y CI/CD', en: 'Quarkus, Docker, GitHub Actions and CI/CD' },
+  },
+  {
+    title: 'Docker Deep Dive con IA Generativa',
+    url: 'https://matomaylla.com/publicaciones/docker-deep-dive/',
+    date: '2025-10',
+    topics: { es: 'Docker, IA y DevOps', en: 'Docker, AI and DevOps' },
+  },
+];
 
 export const testimonials: { quote: Record<Lang, string>; author: string; title: Record<Lang, string> }[] = [
   {
@@ -151,9 +269,16 @@ export const featuredCerts = [
   'CKAD: Certified Kubernetes Application Developer',
   'Microsoft Certified: DevOps Engineer Expert',
   'Microsoft Certified: Azure Developer Associate',
-  'Associate Cloud Engineer Certification',
   'Generative AI Leader Certification',
+  'Associate Cloud Engineer Certification',
   'KCNA: Kubernetes and Cloud Native Associate',
+];
+
+/** Certifications earned outside Credly (Microsoft Learn), listed with the rest. */
+export const extraCerts = [
+  { name: 'Microsoft Certified: Azure Administrator Associate', issuer: 'Microsoft' },
+  { name: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate', issuer: 'Microsoft' },
+  { name: 'Microsoft Certified: Security, Compliance, and Identity Fundamentals', issuer: 'Microsoft' },
 ];
 
 const monthNames: Record<Lang, string[]> = {

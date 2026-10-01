@@ -13,7 +13,7 @@ export interface Props {
 
 const { title, description, lang } = Astro.props;
 
-const site = Astro.site ?? new URL('https://matomaylla.com');
+const site = Astro.site ?? new URL('https://cv.matomaylla.com');
 const canonical = new URL(lang === 'en' ? '/en/' : '/', site);
 const ogImage = await getImage({ src: portrait, width: 1200, format: 'jpg' });
 const ogImageUrl = new URL(ogImage.src, site);

@@ -1,0 +1,34 @@
+---
+import { ui } from '../../data/ui';
+import { formatMonth, person, publications } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="section sheet" id="writing" aria-labelledby="writing-title">
+  <h2 class="section-title" id="writing-title">{t.writing}</h2>
+  <div class="split">
+    <p class="contact-intro">{t.writingIntro}</p>
+    <div>
+      <ol class="posts">
+        {publications.map((post) => (
+          <li>
+            <a href={post.url} target="_blank" rel="noopener" lang="es">{post.title}</a>
+            <span>
+              <time datetime={post.date}>{formatMonth(post.date, lang)}</time>, {post.topics[lang]}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <a class="btn btn-ghost posts-all" href={`${person.blog}/publicaciones/`} target="_blank" rel="noopener">
+        {t.writingAll}
+      </a>
+    </div>
+  </div>
+</section>
