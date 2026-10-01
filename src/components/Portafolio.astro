@@ -1,33 +1,23 @@
 ---
-import { generateImage } from 'astro-eleventy-img';
+import { getImage } from 'astro:assets';
+import prismaSrc from '../images/rsz_prismamatomayllacom.png';
+import reactSrc from '../images/rsz_1react.png';
+import security2Src from '../images/rsz_11swagger.png';
+import egresadoSrc from '../images/egresado.png';
 import mixpanel from 'mixpanel-browser';
 
 
-const prisma = generateImage('src/images/rsz_prismamatomayllacom.png', {
-  // The options here are passed directly to eleventy-img
-  widths: [540],
-  formats: ['webp', 'avif'],
-});
+const prisma = await getImage({ src: prismaSrc, width: 540, format: 'webp' });
 
-const react = generateImage('src/images/rsz_1react.png', {
-  // The options here are passed directly to eleventy-img
-  widths: [540],
-  formats: ['webp', 'avif'],
-});
+const react = await getImage({ src: reactSrc, width: 540, format: 'webp' });
 
-const security2 = generateImage('src/images/rsz_11swagger.png', {
-    widths: [540],
-  formats: ['webp', 'avif'],
-});
+const security2 = await getImage({ src: security2Src, width: 540, format: 'webp' });
 
 export interface Props {
     portafolio: string;
 };
 
-const egresado = generateImage('src/images/egresado.png', {
-    widths: [540],
-    formats: ['webp', 'avif'],
-});
+const egresado = await getImage({ src: egresadoSrc, width: 540, format: 'webp' });
 
 const { portafolio } = Astro.props;
 
@@ -59,7 +49,7 @@ mixpanel.track('Signed Up', {
                             <div class="thumb-info-wrapper">
                                 <a target="_blank" href="https://prisma.matomaylla.com/docs/">
                                     <img
-                                        src={prisma.webp[0].url}
+                                        src={prisma.src}
                                         
                                         class="img-fluid"
                                     />
@@ -112,7 +102,7 @@ mixpanel.track('Signed Up', {
                             <div class="thumb-info-wrapper">
                                 <a target="_blank" href="https://url.matomaylla.com/">
                                     <img
-                                        src={react.webp[0].url}
+                                        src={react.src}
                                        
                                         class="img-fluid"
                                     />
@@ -174,7 +164,7 @@ mixpanel.track('Signed Up', {
                             <div class="thumb-info-wrapper">
                                 <a target="_blank" href="https://auth.matomaylla.com/swagger-ui/index.html">
                                     <img
-                                        src={security2.webp[0].url}
+                                        src={security2.src}
                                        
                                         class="img-fluid"
                                     />
@@ -227,7 +217,7 @@ mixpanel.track('Signed Up', {
                             <div class="thumb-info-wrapper">
                                 <a target="_blank" href="https://egresado.matomaylla.com/consulta.html">
                                     <img
-                                        src={egresado.webp[0].url}
+                                        src={egresado.src}
                                         
                                         class="img-fluid"
                                     />

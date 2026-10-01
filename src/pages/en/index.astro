@@ -49,12 +49,10 @@ const nacionalidad = "Peruvian";
 const email = "michael.tomaylla@pucp.edu.pe";
 const telefono = "+511 991214131";
 
-import { generateImage } from 'astro-eleventy-img';
+import { getImage } from 'astro:assets';
+import border1Src from '../../images/pexels-faik-akmd-1025469.jpg';
 
-const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
-  widths: [4200],
-  formats: ['webp', 'avif'],
-});
+const border1 = await getImage({ src: border1Src, width: 4200, format: 'webp' });
 
 mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
 
@@ -72,7 +70,7 @@ mixpanel.track('Page View EN', {
         <div role="main" class="main">
 
             <div id="about-me">
-                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.webp[0].url}>
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.src}>
                     
                     <SobreMi lang="en" />
                     
@@ -246,7 +244,7 @@ mixpanel.track('Page View EN', {
                         <Correo client:visible />
                     </div>
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
+                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.src}); background-size: cover;`}>
                             <div class="row m-0">
                                 <div class="col-half-section col-half-section-left ms-3">
                                     <a href="mailto:you@domain.com" class="text-decoration-none">

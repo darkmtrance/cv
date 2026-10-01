@@ -1,5 +1,6 @@
 ---
-import { generateImage } from 'astro-eleventy-img';
+import { getImage } from 'astro:assets';
+import michaelSrc from '../images/michael.png';
 import type { Lang } from '../i18n/utils';
 
 export interface Props {
@@ -33,15 +34,12 @@ const translations = {
 
 const t = translations[lang];
 
-const michael = generateImage('src/images/michael.png', {
-  widths: [900],
-  formats: ['webp', 'avif'],
-});
+const michael = await getImage({ src: michaelSrc, width: 900, format: 'webp' });
 ---
 <div class="container">
     <div class="row">
         <div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
-            <img src={michael.webp[0].url} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4"  alt="Michael Tomaylla" />
+            <img src={michael.src} class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4"  alt="Michael Tomaylla" />
         </div>
         <div class="col-lg-6 col-xl-5">
             <h1 class="text-color-primary custom-font-size-1">Michael Tomaylla</h1>
@@ -62,7 +60,7 @@ const michael = generateImage('src/images/michael.png', {
             </span>
         </div>
         <!--div class="col-lg-2 col-xl-3 d-none d-lg-block">
-            <img src="img/demos/resume/about-me/pexels-lukas-917463.jpg" custom-anim class="img-fluid custom-image-pos-1" alt />
+            <img src="/img/demos/resume/about-me/pexels-lukas-917463.jpg" custom-anim class="img-fluid custom-image-pos-1" alt />
         </div-->
     </div>
 </div>

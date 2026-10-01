@@ -46,13 +46,10 @@ const nacionalidad = "Peruana";
 const email = "michael.tomaylla@pucp.edu.pe";
 const telefono = "+511 991214131";
 
-import { generateImage } from 'astro-eleventy-img';
+import { getImage } from 'astro:assets';
+import border1Src from '../images/pexels-faik-akmd-1025469.jpg';
 
-const border1 = generateImage('src/images/pexels-faik-akmd-1025469.jpg', {
-  // The options here are passed directly to eleventy-img
-  widths: [4200],
-  formats: ['webp', 'avif'],
-});
+const border1 = await getImage({ src: border1Src, width: 4200, format: 'webp' });
 
 mixpanel.init('5b05eef832ff85334f96a86e0762fabf', {debug: true}); 
 
@@ -69,7 +66,7 @@ mixpanel.track('Signed Up', {
         <div role="main" class="main">
 
             <div id="about-me">
-                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.webp[0].url}>
+                <section class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src={border1.src}>
                     
                     <SobreMi lang="es" />
                     
@@ -264,7 +261,7 @@ mixpanel.track('Signed Up', {
                         <Correo client:visible />
                     </div>
                     <div class="col-lg-6 p-0">
-                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.webp[0].url}); background-size: cover;`}>
+                        <section class="section section-no-border h-100 m-0" style={`background: url(${border1.src}); background-size: cover;`}>
                             <div class="row m-0">
                                 <div class="col-half-section col-half-section-left ms-3">
                                     <a href="mailto:you@domain.com" class="text-decoration-none">
@@ -322,31 +319,31 @@ mixpanel.track('Signed Up', {
     </div>
 
     <!-- Vendor -->
-    <script is:inline src="vendor/jquery/jquery.min.js"></script>
-    <script is:inline src="vendor/jquery.appear/jquery.appear.min.js"></script>
-    <script is:inline src="vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script is:inline src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
-    <script is:inline src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script is:inline src="vendor/jquery.validation/jquery.validate.min.js"></script>
-    <script is:inline src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script is:inline src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
-    <script is:inline src="vendor/lazysizes/lazysizes.min.js"></script>
-    <script is:inline src="vendor/isotope/jquery.isotope.min.js"></script>
-    <script is:inline src="vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script is:inline src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script is:inline src="vendor/vide/jquery.vide.min.js"></script>
-    <script is:inline src="vendor/vivus/vivus.min.js"></script>
+    <script is:inline src="/vendor/jquery/jquery.min.js"></script>
+    <script is:inline src="/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script is:inline src="/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script is:inline src="/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script is:inline src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script is:inline src="/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script is:inline src="/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script is:inline src="/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script is:inline src="/vendor/lazysizes/lazysizes.min.js"></script>
+    <script is:inline src="/vendor/isotope/jquery.isotope.min.js"></script>
+    <script is:inline src="/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script is:inline src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script is:inline src="/vendor/vide/jquery.vide.min.js"></script>
+    <script is:inline src="/vendor/vivus/vivus.min.js"></script>
   
     <!-- Theme Base, Components and Settings -->
-    <script is:inline src="js/theme.js"></script>
+    <script is:inline src="/js/theme.js"></script>
 
     <!-- Current Page Vendor and Views -->
-    <script is:inline src="js/views/view.contact.js"></script>
+    <script is:inline src="/js/views/view.contact.js"></script>
     <!-- Demo -->
-    <script is:inline src="js/demos/demo-resume.js"></script>
+    <script is:inline src="/js/demos/demo-resume.js"></script>
     <!-- Theme Custom -->
-    <script is:inline src="js/custom.js"></script>
+    <script is:inline src="/js/custom.js"></script>
     <!-- Theme Initialization Files -->
-    <script is:inline src="js/theme.init.js"></script>
+    <script is:inline src="/js/theme.init.js"></script>
 
 </Layout>
