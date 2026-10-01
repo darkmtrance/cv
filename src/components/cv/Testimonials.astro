@@ -1,0 +1,27 @@
+---
+import { ui } from '../../data/ui';
+import { testimonials } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="section sheet" id="testimonials" aria-labelledby="testimonials-title">
+  <h2 class="section-title" id="testimonials-title">{t.testimonials}</h2>
+  <div class="quotes">
+    {testimonials.map((item) => (
+      <blockquote>
+        <p>{item.quote[lang]}</p>
+        <footer>
+          <cite>{item.author}</cite>
+          {item.title[lang]}
+        </footer>
+      </blockquote>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import { ui } from '../../data/ui';
+import { formatDuration, formatMonth, jobs } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="section sheet" id="experience" aria-labelledby="experience-title">
+  <h2 class="section-title" id="experience-title">{t.experience}</h2>
+  {jobs.map((job) => (
+    <article class="job split" id={`job-${job.id}`}>
+      <p class="job-meta">
+        <span class="job-dates">
+          <time datetime={job.start}>{formatMonth(job.start, lang)}</time>
+          {' – '}
+          {job.end ? <time datetime={job.end}>{formatMonth(job.end, lang)}</time> : formatMonth(null, lang)}
+        </span>
+        {formatDuration(job.start, job.end, lang)}
+        <br />
+        {job.location[lang]}
+      </p>
+      <div>
+        <h3 class="job-company">{job.company}</h3>
+        <p class="job-role">{job.role[lang]}</p>
+        {job.highlights && (
+          <ul class="job-points">
+            {job.highlights[lang].map((point) => <li set:html={point} />)}
+          </ul>
+        )}
+        {job.projects?.map((project) => (
+          <div class="project">
+            <h4 class="project-name">
+              {project.name[lang]}
+              <span class="project-dates">
+                {formatMonth(project.start, lang)} – {formatMonth(project.end, lang)}
+              </span>
+            </h4>
+            <ul class="job-points">
+              {project.highlights[lang].map((point) => <li set:html={point} />)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </article>
+  ))}
+</section>

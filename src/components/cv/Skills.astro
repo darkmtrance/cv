@@ -1,0 +1,58 @@
+---
+import { ui } from '../../data/ui';
+import { levelLabel, softSkills, specialties, stack, type StackItem } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const itemName = ({ name }: StackItem) => (Array.isArray(name) ? name[lang === 'en' ? 1 : 0] : name);
+---
+
+<section class="section sheet" id="skills" aria-labelledby="skills-title">
+  <h2 class="section-title" id="skills-title">{t.skills}</h2>
+  <div class="split">
+    <div>
+      <div class="side-block">
+        <h3>{t.specialties}</h3>
+        <ul class="plain-list">
+          {specialties[lang].map((area) => <li>{area}</li>)}
+        </ul>
+      </div>
+      <div class="side-block">
+        <h3>{t.soft}</h3>
+        <ul class="plain-list">
+          {softSkills[lang].map((skill) => <li>{skill}</li>)}
+        </ul>
+      </div>
+      <div class="side-block">
+        <h3>{t.education}</h3>
+        <p>{t.university}</p>
+        <p class="muted">{t.degree}, 2014</p>
+      </div>
+    </div>
+    <div>
+      <h3 class="visually-hidden">{t.stack}</h3>
+      <dl class="stack">
+        {stack.map((group) => (
+          <div>
+            <dt>{group.label[lang]}</dt>
+            <dd>
+              {group.items.map((item, i) => (
+                <>
+                  {itemName(item)}
+                  {item.level && <span class="level"> ({levelLabel[lang][item.level]})</span>}
+                  {i < group.items.length - 1 && ', '}
+                </>
+              ))}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

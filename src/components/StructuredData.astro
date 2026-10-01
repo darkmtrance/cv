@@ -1,13 +1,19 @@
 ---
 // Structured Data (JSON-LD) for SEO
+export interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Michael Antonio Tomaylla Mendoza",
   "jobTitle": "Software Architect",
-  "description": "Arquitecto de Software con más de 15 años de experiencia en desarrollo de sistemas empresariales, arquitectura cloud y mentoría técnica.",
-  "url": "https://matomaylla.com",
-  "image": "https://matomaylla.com/img/michael.jpg",
+  "description": "Arquitecto de Software con más de 15 años diseñando plataformas críticas en Java, cloud-native y microservicios, y mentor técnico de equipos en LATAM.",
+  "url": "https://cv.matomaylla.com",
+  "image": image,
   "email": "michael.tomaylla@pucp.edu.pe",
   "telephone": "+51991214131",
   "address": {
@@ -28,7 +34,8 @@ const structuredData = {
   "sameAs": [
     "https://www.linkedin.com/in/mtm2019/",
     "https://github.com/darkmtrance",
-    "https://www.credly.com/users/michael-tomaylla"
+    "https://www.credly.com/users/michael-tomaylla",
+    "https://matomaylla.com"
   ],
   "knowsAbout": [
     "Software Architecture",
@@ -44,6 +51,9 @@ const structuredData = {
     "Docker",
     "CI/CD",
     "Technical Leadership",
+    "Domain-Driven Design",
+    "Spring AI",
+    "Generative AI",
     "Software Development"
   ],
   "hasCredential": [

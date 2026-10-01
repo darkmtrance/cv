@@ -4,10 +4,10 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://matomaylla.com',
+  site: 'https://cv.matomaylla.com',
   integrations: [
     react(),
-    sitemap()
+    sitemap({ filter: (page) => !page.includes('/cv/print') })
   ],
   i18n: {
     defaultLocale: 'es',

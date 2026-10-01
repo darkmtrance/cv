@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+import { ui } from '../../data/ui';
+import { person } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<a class="skip-link" href="#main">{t.skip}</a>
+<div class="topbar">
+  <div class="sheet topbar-inner">
+    <a class="topbar-name" href="#top">{person.shortName}</a>
+    <nav class="topbar-nav" aria-label={lang === 'es' ? 'Secciones' : 'Sections'}>
+      <a href="#experience">{t.nav.experience}</a>
+      <a href="#skills">{t.nav.skills}</a>
+      <a href="#certifications">{t.nav.certs}</a>
+      <a href="#writing">{t.nav.writing}</a>
+      <a href="#contact">{t.nav.contact}</a>
+    </nav>
+    <a class="topbar-lang" href={t.switchLangHref} hreflang={lang === 'es' ? 'en' : 'es'} aria-label={t.switchLangLabel}>
+      {t.switchLang}
+    </a>
+    <a class="btn btn-primary" href={person.cv} download>
+      <Icon name="download" />
+      <span>{t.downloadCv}</span>
+    </a>
+  </div>
+</div>

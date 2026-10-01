@@ -1,0 +1,97 @@
+---
+import { ui } from '../../data/ui';
+import { extraCerts, featuredCerts, person } from '../../data/cv';
+import type { Lang } from '../../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+interface Badge {
+  id: string;
+  name: string;
+  issuer: string;
+  issued: Date;
+  image: string;
+  url: string;
+}
+
+const shortIssuer = (name: string) =>
+  name
+    .replace('Amazon Web Services Training and Certification', 'AWS')
+    .replace('Microsoft Americas Azure Team', 'Microsoft');
+
+// Badges are fetched from Credly at build time; the section degrades to a link if it fails
+let badges: Badge[] = [];
+try {
+  const res = await fetch(`${person.credly}/badges.json`);
+  const json = await res.json();
+  badges = json.data
+    .map((b: any) => ({
+      id: b.id,
+      name: b.badge_template.name,
+      issuer: shortIssuer(b.badge_template.issuer.entities[0].entity.name),
+      issued: new Date(b.issued_at),
+      image: b.image_url.replace('images.credly.com/images/', 'images.credly.com/size/220x220/images/'),
+      url: `https://www.credly.com/badges/${b.id}`,
+    }))
+    .filter((b: Badge) => !b.name.includes('(Legacy)'))
+    .sort((a: Badge, b: Badge) => b.issued.getTime() - a.issued.getTime());
+} catch (error) {
+  console.warn('Could not load Credly badges:', error);
+}
+
+// Keep only the newest badge for each name (e.g. a renewed certification)
+const seen = new Set<string>();
+badges = badges.filter((b) => (seen.has(b.name) ? false : (seen.add(b.name), true)));
+
+const featured = featuredCerts
+  .map((prefix) => badges.find((b) => b.name.startsWith(prefix)))
+  .filter((b): b is Badge => Boolean(b));
+const rest = badges.filter((b) => !featured.includes(b));
+const total = badges.length + extraCerts.length;
+---
+
+<section class="section sheet" id="certifications" aria-labelledby="certs-title">
+  <h2 class="section-title" id="certs-title">{t.certs}</h2>
+  {badges.length === 0 ? (
+    <p><a href={person.credly} target="_blank" rel="noopener">{t.verify}</a></p>
+  ) : (
+    <>
+      <p class="certs-intro">{t.certsIntro(total)}</p>
+      <ul class="cert-grid">
+        {featured.map((b) => (
+          <li>
+            <a href={b.url} target="_blank" rel="noopener">
+              <img src={b.image} width="112" height="112" alt="" loading="lazy" decoding="async" />
+              <p class="cert-name">{b.name}</p>
+              <p class="cert-issuer">{b.issuer}, {b.issued.getFullYear()}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {rest.length + extraCerts.length > 0 && (
+        <details class="cert-more">
+          <summary>{t.certsAll(rest.length + extraCerts.length)}</summary>
+          <ul class="cert-list">
+            {extraCerts.map((c) => (
+              <li>
+                {c.name}
+                <span>{c.issuer}</span>
+              </li>
+            ))}
+            {rest.map((b) => (
+              <li>
+                <a href={b.url} target="_blank" rel="noopener">{b.name}</a>
+                <span>{b.issuer}, {b.issued.getFullYear()}</span>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </>
+  )}
+</section>
