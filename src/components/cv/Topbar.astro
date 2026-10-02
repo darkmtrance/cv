@@ -26,7 +26,7 @@ const t = ui[lang];
     <a class="topbar-lang" href={t.switchLangHref} hreflang={lang === 'es' ? 'en' : 'es'} aria-label={t.switchLangLabel}>
       {t.switchLang}
     </a>
-    <a class="btn btn-primary" href={person.cv} download>
+    <a class="btn btn-primary" href={person.cv} download data-umami-event="cv-download" data-umami-event-location="topbar">
       <Icon name="download" />
       <span>{t.downloadCv}</span>
     </a>
