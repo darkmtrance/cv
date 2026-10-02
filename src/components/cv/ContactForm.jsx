@@ -21,9 +21,11 @@ export default function ContactForm({ lang = 'es', email }) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       formEl.reset();
       setStatus('sent');
+      window.umami?.track('contact-form-sent', { lang });
     } catch (error) {
       console.error(error);
       setStatus('error');
+      window.umami?.track('contact-form-error', { lang });
     }
   }
 

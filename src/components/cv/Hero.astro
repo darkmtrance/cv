@@ -55,16 +55,16 @@ const years = Array.from({ length: now.getFullYear() - firstYear + 1 }, (_, i) =
     <p class="hero-role">{t.role}</p>
     <p class="hero-pitch">{t.pitch(yearsOfExperience())}</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href={person.cv} download>
+      <a class="btn btn-primary" href={person.cv} download data-umami-event="cv-download" data-umami-event-location="hero">
         <Icon name="download" />
         {t.downloadCv}
       </a>
-      <a class="btn btn-ghost" href="#contact">{t.writeMe}</a>
+      <a class="btn btn-ghost" href="#contact" data-umami-event="contact-cta">{t.writeMe}</a>
       <span class="icon-links">
-        <a class="icon-link" href={person.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a class="icon-link" href={person.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" data-umami-event="outbound-linkedin" data-umami-event-location="hero">
           <Icon name="linkedin" />
         </a>
-        <a class="icon-link" href={person.github} target="_blank" rel="noopener" aria-label="GitHub">
+        <a class="icon-link" href={person.github} target="_blank" rel="noopener" aria-label="GitHub" data-umami-event="outbound-github" data-umami-event-location="hero">
           <Icon name="github" />
         </a>
       </span>
